@@ -72,7 +72,8 @@ class AppSelectionFragment : Fragment() {
             "com.tencent.mm", // 微信
             "com.tencent.tim", // QQ
             "com.netease.cloudmusic", // 网易云音乐
-            "com.tencent.mobileqq" // QQ
+            "com.tencent.mobileqq", // QQ
+            "com.m3.mobileoffice" // 移动办公M3
         )
         
         for (app in userApps) {

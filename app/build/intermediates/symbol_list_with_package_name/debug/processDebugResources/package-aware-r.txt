@@ -3087,6 +3087,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable button_background
 drawable design_fab_background
 drawable design_ic_visibility
 drawable design_ic_visibility_off
@@ -3303,13 +3304,16 @@ id bounceEnd
 id bounceStart
 id btn_accessibility_settings
 id btn_add_task
+id btn_back
 id btn_cancel
 id btn_cancel_record
 id btn_cancel_setting
 id btn_confirm
 id btn_confirm_setting
 id btn_delete_task
+id btn_desktop
 id btn_edit_task
+id btn_home
 id btn_pause_record
 id btn_record_action
 id btn_save_notification_settings
@@ -3534,6 +3538,7 @@ id mtrl_view_tag_bottom_padding
 id multiply
 id nav_controller_view_tag
 id nav_host_fragment_container
+id nav_host_fragment_content_main
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view

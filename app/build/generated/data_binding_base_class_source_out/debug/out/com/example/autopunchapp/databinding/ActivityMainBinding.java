@@ -4,6 +4,8 @@ package com.example.autopunchapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -21,15 +23,33 @@ public final class ActivityMainBinding implements ViewBinding {
   private final CoordinatorLayout rootView;
 
   @NonNull
+  public final Button btnBack;
+
+  @NonNull
+  public final Button btnDesktop;
+
+  @NonNull
+  public final Button btnHome;
+
+  @NonNull
   public final FloatingActionButton fabSettings;
+
+  @NonNull
+  public final FrameLayout navHostFragmentContentMain;
 
   @NonNull
   public final Toolbar toolbar;
 
-  private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FloatingActionButton fabSettings, @NonNull Toolbar toolbar) {
+  private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull Button btnBack,
+      @NonNull Button btnDesktop, @NonNull Button btnHome,
+      @NonNull FloatingActionButton fabSettings, @NonNull FrameLayout navHostFragmentContentMain,
+      @NonNull Toolbar toolbar) {
     this.rootView = rootView;
+    this.btnBack = btnBack;
+    this.btnDesktop = btnDesktop;
+    this.btnHome = btnHome;
     this.fabSettings = fabSettings;
+    this.navHostFragmentContentMain = navHostFragmentContentMain;
     this.toolbar = toolbar;
   }
 
@@ -60,9 +80,33 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btn_back;
+      Button btnBack = ViewBindings.findChildViewById(rootView, id);
+      if (btnBack == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_desktop;
+      Button btnDesktop = ViewBindings.findChildViewById(rootView, id);
+      if (btnDesktop == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_home;
+      Button btnHome = ViewBindings.findChildViewById(rootView, id);
+      if (btnHome == null) {
+        break missingId;
+      }
+
       id = R.id.fab_settings;
       FloatingActionButton fabSettings = ViewBindings.findChildViewById(rootView, id);
       if (fabSettings == null) {
+        break missingId;
+      }
+
+      id = R.id.nav_host_fragment_content_main;
+      FrameLayout navHostFragmentContentMain = ViewBindings.findChildViewById(rootView, id);
+      if (navHostFragmentContentMain == null) {
         break missingId;
       }
 
@@ -72,7 +116,8 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, fabSettings, toolbar);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, btnBack, btnDesktop, btnHome,
+          fabSettings, navHostFragmentContentMain, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

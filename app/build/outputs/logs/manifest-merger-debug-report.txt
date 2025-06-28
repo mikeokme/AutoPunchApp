@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-59:12
-INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-59:12
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-63:12
+INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:2:1-63:12
 MERGED from [androidx.databinding:viewbinding:8.11.0] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\f9dfa4a01ff5a19b0b974028471cf80c\transformed\viewbinding-8.11.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.navigation:navigation-runtime-android:2.9.0] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\3c9a2671e71aa5cfdde00bc166ed3c90\transformed\navigation-runtime-release\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.navigation:navigation-common-android:2.9.0] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\45fd394e749d88b82e82b0f73db78c9c\transformed\navigation-common-release\AndroidManifest.xml:17:1-22:12
@@ -91,9 +91,15 @@ ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:9:5-10:47
 		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:10:9-44
 	android:name
 		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:9:22-82
+uses-permission#android.permission.QUERY_ALL_PACKAGES
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:13:5-14:53
+	tools:ignore
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:14:9-50
+	android:name
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:13:22-74
 application
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:12:5-57:19
-INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:12:5-57:19
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:16:5-61:19
+INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:16:5-61:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\2c4ddb7528435e7139ce5e6228e652a7\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\2c4ddb7528435e7139ce5e6228e652a7\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\52150978c73c6569c3bca6e47ed4194d\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -117,73 +123,73 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\yangbin\.gradle\ca
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.16.0] C:\Users\yangbin\.gradle\caches\8.14.2\transforms\87fb9c1d81d00d5d674a64641a8ded9b\transformed\core-1.16.0\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:17:9-35
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:21:9-35
 	android:label
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:15:9-41
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:19:9-41
 	android:roundIcon
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:16:9-47
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:20:9-47
 	android:icon
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:14:9-42
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:18:9-42
 	android:allowBackup
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:13:9-35
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:17:9-35
 	android:theme
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:18:9-50
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:22:9-50
 activity#com.example.autopunchapp.MainActivity
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:20:9-28:20
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:24:9-32:20
 	android:exported
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:22:13-36
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:26:13-36
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:21:13-41
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:25:13-41
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:24:13-27:29
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:28:13-31:29
 action#android.intent.action.MAIN
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:25:17-69
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:29:17-69
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:25:25-66
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:29:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:26:17-77
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:30:17-77
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:26:27-74
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:30:27-74
 service#com.example.autopunchapp.service.AutoPunchAccessibilityService
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:31:9-41:19
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:35:9-45:19
 	android:exported
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:34:13-37
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:38:13-37
 	android:permission
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:33:13-79
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:37:13-79
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:32:13-66
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:36:13-66
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:35:13-37:29
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:39:13-41:29
 action#android.accessibilityservice.AccessibilityService
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:36:17-92
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:40:17-92
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:36:25-89
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:40:25-89
 meta-data#android.accessibilityservice
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:38:13-40:72
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:42:13-44:72
 	android:resource
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:40:17-69
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:44:17-69
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:39:17-60
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:43:17-60
 service#com.example.autopunchapp.service.PunchJobService
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:44:9-47:40
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:48:9-51:40
 	android:exported
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:47:13-37
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:51:13-37
 	android:permission
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:46:13-69
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:50:13-69
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:45:13-52
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:49:13-52
 receiver#com.example.autopunchapp.receiver.BootCompletedReceiver
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:50:9-56:20
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:54:9-60:20
 	android:exported
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:52:13-37
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:56:13-37
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:51:13-59
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:55:13-59
 intent-filter#action:name:android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:53:13-55:29
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:57:13-59:29
 action#android.intent.action.BOOT_COMPLETED
-ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:54:17-79
+ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:58:17-79
 	android:name
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:54:25-76
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:58:25-76
 uses-sdk
 INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml

@@ -35,6 +35,7 @@ color surface
 color teal_200
 color teal_700
 color white
+drawable button_background
 drawable ic_clock
 drawable ic_launcher_foreground
 drawable record_area_background
@@ -50,13 +51,16 @@ id action_settings
 id action_time_setting
 id btn_accessibility_settings
 id btn_add_task
+id btn_back
 id btn_cancel
 id btn_cancel_record
 id btn_cancel_setting
 id btn_confirm
 id btn_confirm_setting
 id btn_delete_task
+id btn_desktop
 id btn_edit_task
+id btn_home
 id btn_pause_record
 id btn_record_action
 id btn_save_notification_settings
@@ -73,6 +77,7 @@ id et_search_app
 id fab_settings
 id iv_app_icon
 id layout_gesture_feedback
+id nav_host_fragment_content_main
 id rv_app_list
 id rv_punch_log
 id rv_task_list
