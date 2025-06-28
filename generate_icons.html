@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>生成应用图标</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        canvas { border: 1px solid #ccc; margin: 10px; }
+        .download-btn { 
+            background: #6200ee; color: white; padding: 10px 20px; 
+            border: none; border-radius: 5px; cursor: pointer; margin: 5px;
+        }
+        .download-btn:hover { background: #3700b3; }
+    </style>
+</head>
+<body>
+    <h1>自动打卡应用图标生成器</h1>
+    <p>点击下方按钮下载不同尺寸的图标</p>
+    
+    <div id="canvases"></div>
+    
+    <script>
+        const sizes = {
+            'mdpi': 48,
+            'hdpi': 72,
+            'xhdpi': 96,
+            'xxhdpi': 144,
+            'xxxhdpi': 192
+        };
+        
+        function createClockIcon(size) {
+            const canvas = document.createElement('canvas');
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // 颜色定义
+            const primaryColor = '#6200ee';  // 紫色
+            const whiteColor = '#ffffff';
+            
+            // 计算中心点和半径
+            const center = size / 2;
+            const outerRadius = size * 0.4;
+            const innerRadius = size * 0.35;
+            
+            // 绘制外圆（背景）
+            ctx.fillStyle = primaryColor;
+            ctx.beginPath();
+            ctx.arc(center, center, outerRadius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // 绘制内圆（时钟面）
+            ctx.fillStyle = whiteColor;
+            ctx.beginPath();
+            ctx.arc(center, center, innerRadius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // 绘制时钟中心点
+            const centerRadius = Math.max(2, size / 50);
+            ctx.fillStyle = primaryColor;
+            ctx.beginPath();
+            ctx.arc(center, center, centerRadius, 0, 2 * Math.PI);
+            ctx.fill();
+            
+            // 绘制时针（指向9点）
+            const hourHandLength = size * 0.2;
+            const hourHandWidth = Math.max(2, size / 50);
+            ctx.fillStyle = primaryColor;
+            ctx.fillRect(center - hourHandWidth/2, center - hourHandLength, hourHandWidth, hourHandLength);
+            
+            // 绘制分针（指向12点）
+            const minuteHandLength = size * 0.25;
+            const minuteHandWidth = Math.max(1, size / 80);
+            ctx.fillStyle = primaryColor;
+            ctx.fillRect(center - minuteHandWidth/2, center - minuteHandLength, minuteHandWidth, minuteHandLength);
+            
+            // 绘制时钟刻度
+            const tickLength = Math.max(3, size / 30);
+            const tickWidth = Math.max(1, size / 100);
+            ctx.fillStyle = primaryColor;
+            
+            // 12点刻度
+            ctx.fillRect(center - tickWidth/2, center - innerRadius + 5, tickWidth, tickLength);
+            // 6点刻度
+            ctx.fillRect(center - tickWidth/2, center + innerRadius - 5 - tickLength, tickWidth, tickLength);
+            // 3点刻度
+            ctx.fillRect(center + innerRadius - 5 - tickLength, center - tickWidth/2, tickLength, tickWidth);
+            // 9点刻度
+            ctx.fillRect(center - innerRadius + 5, center - tickWidth/2, tickLength, tickWidth);
+            
+            return canvas;
+        }
+        
+        function downloadCanvas(canvas, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // 生成所有尺寸的图标
+        Object.entries(sizes).forEach(([density, size]) => {
+            const container = document.createElement('div');
+            container.style.margin = '20px 0';
+            
+            const title = document.createElement('h3');
+            title.textContent = `${density.toUpperCase()} (${size}x${size})`;
+            container.appendChild(title);
+            
+            const canvas = createClockIcon(size);
+            container.appendChild(canvas);
+            
+            const downloadBtn1 = document.createElement('button');
+            downloadBtn1.textContent = `下载 ic_launcher.png`;
+            downloadBtn1.className = 'download-btn';
+            downloadBtn1.onclick = () => downloadCanvas(canvas, `ic_launcher_${density}.png`);
+            container.appendChild(downloadBtn1);
+            
+            const downloadBtn2 = document.createElement('button');
+            downloadBtn2.textContent = `下载 ic_launcher_round.png`;
+            downloadBtn2.className = 'download-btn';
+            downloadBtn2.onclick = () => downloadCanvas(canvas, `ic_launcher_round_${density}.png`);
+            container.appendChild(downloadBtn2);
+            
+            document.getElementById('canvases').appendChild(container);
+        });
+        
+        // 添加批量下载按钮
+        const batchContainer = document.createElement('div');
+        batchContainer.style.margin = '30px 0';
+        batchContainer.style.padding = '20px';
+        batchContainer.style.backgroundColor = '#f0f0f0';
+        batchContainer.style.borderRadius = '10px';
+        
+        const batchTitle = document.createElement('h2');
+        batchTitle.textContent = '批量下载所有图标';
+        batchContainer.appendChild(batchTitle);
+        
+        const batchBtn = document.createElement('button');
+        batchBtn.textContent = '下载所有图标';
+        batchBtn.className = 'download-btn';
+        batchBtn.style.fontSize = '16px';
+        batchBtn.style.padding = '15px 30px';
+        batchBtn.onclick = () => {
+            Object.entries(sizes).forEach(([density, size]) => {
+                setTimeout(() => {
+                    const canvas = createClockIcon(size);
+                    downloadCanvas(canvas, `ic_launcher_${density}.png`);
+                    setTimeout(() => {
+                        downloadCanvas(canvas, `ic_launcher_round_${density}.png`);
+                    }, 100);
+                }, density === 'mdpi' ? 0 : Object.keys(sizes).indexOf(density) * 200);
+            });
+        };
+        batchContainer.appendChild(batchBtn);
+        
+        document.getElementById('canvases').appendChild(batchContainer);
+    </script>
+</body>
+</html> 

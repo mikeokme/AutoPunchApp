@@ -1,5 +1,13 @@
 [
     {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\activity_main.xml"
     },
@@ -20,6 +28,10 @@
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\mipmap-xhdpi\\ic_launcher.png"
     },
     {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_fragment_punch_plan.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\fragment_punch_plan.xml"
     },
@@ -28,12 +40,24 @@
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\drawable\\status_completed_background.xml"
     },
     {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-hdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\drawable_ic_launcher_foreground.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\drawable\\ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-mdpi/ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-xxhdpi_ic_launcher.png.flat",
@@ -72,12 +96,12 @@
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\menu\\menu_main.xml"
     },
     {
-        "merged": "com.example.autopunchapp-debug-47:/layout_activity_main.xml.flat",
-        "source": "com.example.autopunchapp-main-49:/layout/activity_main.xml"
-    },
-    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\xml_accessibility_service_config.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\xml\\accessibility_service_config.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xhdpi/ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-hdpi_ic_launcher.png.flat",
@@ -94,6 +118,18 @@
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_item_punch_task.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\item_punch_task.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\drawable_ic_clock.xml.flat",
+        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\drawable\\ic_clock.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_fragment_app_selection.xml.flat",
@@ -114,5 +150,9 @@
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-xhdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xhdpi/ic_launcher_round.png"
     }
 ]
