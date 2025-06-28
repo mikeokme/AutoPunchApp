@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">自动打卡</string>
     
@@ -66,4 +67,7 @@
     <!-- 无障碍服务 -->
     <string name="accessibility_service_description">自动打卡应用需要无障碍服务权限来模拟点击操作，请启用此服务以确保应用正常工作。</string>
     <string name="accessibility_service_tip">请前往系统设置开启无障碍服务</string>
+    
+    <!-- 新增字符串 -->
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

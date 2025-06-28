@@ -39,6 +39,7 @@
     <string name="accessibility_service_tip">请前往系统设置开启无障碍服务</string>
     <string name="action_record_status">当前打卡动作录制状态</string>
     <string name="app_name">自动打卡</string>
+    <string name="appbar_scrolling_view_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="auto_start">自动启动服务</string>
     <string name="btn_add_task">添加任务</string>
     <string name="btn_cancel">取消选择</string>

@@ -4,7 +4,6 @@ package com.example.autopunchapp.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.FrameLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -25,17 +24,12 @@ public final class ActivityMainBinding implements ViewBinding {
   public final FloatingActionButton fabSettings;
 
   @NonNull
-  public final FrameLayout navHostFragmentContentMain;
-
-  @NonNull
   public final Toolbar toolbar;
 
   private ActivityMainBinding(@NonNull CoordinatorLayout rootView,
-      @NonNull FloatingActionButton fabSettings, @NonNull FrameLayout navHostFragmentContentMain,
-      @NonNull Toolbar toolbar) {
+      @NonNull FloatingActionButton fabSettings, @NonNull Toolbar toolbar) {
     this.rootView = rootView;
     this.fabSettings = fabSettings;
-    this.navHostFragmentContentMain = navHostFragmentContentMain;
     this.toolbar = toolbar;
   }
 
@@ -72,20 +66,13 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.nav_host_fragment_content_main;
-      FrameLayout navHostFragmentContentMain = ViewBindings.findChildViewById(rootView, id);
-      if (navHostFragmentContentMain == null) {
-        break missingId;
-      }
-
       id = R.id.toolbar;
       Toolbar toolbar = ViewBindings.findChildViewById(rootView, id);
       if (toolbar == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((CoordinatorLayout) rootView, fabSettings,
-          navHostFragmentContentMain, toolbar);
+      return new ActivityMainBinding((CoordinatorLayout) rootView, fabSettings, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

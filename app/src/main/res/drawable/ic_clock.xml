@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+    
+    <!-- 背景圆形 -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M54,54m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0" />
+    
+    <!-- 时钟外框 -->
+    <path
+        android:fillColor="@color/white"
+        android:pathData="M54,54m-40,0a40,40 0,1 1,80 0a40,40 0,1 1,-80 0" />
+    
+    <!-- 时钟中心点 -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M54,54m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    
+    <!-- 时针 -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M54,54 L54,30 L52,30 L52,54 Z" />
+    
+    <!-- 分针 -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M54,54 L70,54 L70,52 L54,52 Z" />
+    
+    <!-- 时钟刻度 -->
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M54,20 L56,20 L56,24 L54,24 Z" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M54,84 L56,84 L56,88 L54,88 Z" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M20,54 L24,54 L24,56 L20,56 Z" />
+    <path
+        android:fillColor="@color/primary"
+        android:pathData="M84,54 L88,54 L88,56 L84,56 Z" />
+</vector> 
