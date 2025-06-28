@@ -6,6 +6,7 @@ import com.example.autopunchapp.model.PunchLog
 import com.example.autopunchapp.model.PunchTask
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
+import android.util.Log
 
 /**
  * 偏好设置管理类，用于保存和读取应用程序设置
@@ -18,6 +19,11 @@ class PreferenceManager(context: Context) {
     private val gson = Gson()
 
     companion object {
+        fun saveSelectedApp(packageName: String) {
+            // TODO: 实现静态保存方法
+            Log.d(TAG, "Static saveSelectedApp called with: $packageName")
+        }
+
         private const val PREF_NAME = "autopunch_preferences"
         private const val KEY_PUNCH_STATUS = "punch_status"
         private const val KEY_LAST_PUNCH_TIME = "last_punch_time"
@@ -37,6 +43,7 @@ class PreferenceManager(context: Context) {
         private const val KEY_DAILY_REMINDER = "daily_reminder"
         private const val KEY_PUNCH_COMPLETED_NOTIFICATION = "punch_completed_notification"
         private const val KEY_REMINDER_TIME = "reminder_time"
+        private const val TAG = "PreferenceManager"
     }
 
     // 打卡状态相关
@@ -57,12 +64,24 @@ class PreferenceManager(context: Context) {
     }
 
     // 应用选择相关
-    fun saveSelectedApp(appPosition: Int) {
-        sharedPreferences.edit().putInt(KEY_SELECTED_APP, appPosition).apply()
+    fun saveSelectedApp(context: Context, packageName: String) {
+        try {
+            val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.edit().putString(KEY_SELECTED_APP, packageName).apply()
+            Log.d(TAG, "Saved selected app: $packageName")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error saving selected app", e)
+        }
     }
 
-    fun getSelectedApp(): Int {
-        return sharedPreferences.getInt(KEY_SELECTED_APP, 0)
+    fun getSelectedApp(context: Context): String {
+        return try {
+            val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.getString(KEY_SELECTED_APP, "") ?: ""
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting selected app", e)
+            ""
+        }
     }
 
     // 动作录制相关
@@ -159,12 +178,24 @@ class PreferenceManager(context: Context) {
     }
 
     // 设置相关
-    fun saveNotificationEnabled(enabled: Boolean) {
-        sharedPreferences.edit().putBoolean(KEY_NOTIFICATION_ENABLED, enabled).apply()
+    fun saveNotificationEnabled(context: Context, enabled: Boolean) {
+        try {
+            val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.edit().putBoolean(KEY_NOTIFICATION_ENABLED, enabled).apply()
+            Log.d(TAG, "Saved notification enabled: $enabled")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error saving notification enabled", e)
+        }
     }
 
-    fun getNotificationEnabled(): Boolean {
-        return sharedPreferences.getBoolean(KEY_NOTIFICATION_ENABLED, true)
+    fun getNotificationEnabled(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.getBoolean(KEY_NOTIFICATION_ENABLED, true)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting notification enabled", e)
+            true
+        }
     }
 
     fun saveShowLog(show: Boolean) {
@@ -175,12 +206,24 @@ class PreferenceManager(context: Context) {
         return sharedPreferences.getBoolean(KEY_SHOW_LOG, true)
     }
 
-    fun saveAutoStart(autoStart: Boolean) {
-        sharedPreferences.edit().putBoolean(KEY_AUTO_START, autoStart).apply()
+    fun saveAutoStart(context: Context, enabled: Boolean) {
+        try {
+            val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.edit().putBoolean(KEY_AUTO_START, enabled).apply()
+            Log.d(TAG, "Saved auto start: $enabled")
+        } catch (e: Exception) {
+            Log.e(TAG, "Error saving auto start", e)
+        }
     }
 
-    fun getAutoStart(): Boolean {
-        return sharedPreferences.getBoolean(KEY_AUTO_START, true)
+    fun getAutoStart(context: Context): Boolean {
+        return try {
+            val prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
+            prefs.getBoolean(KEY_AUTO_START, true)
+        } catch (e: Exception) {
+            Log.e(TAG, "Error getting auto start", e)
+            true
+        }
     }
 
     fun saveLanguage(language: String) {

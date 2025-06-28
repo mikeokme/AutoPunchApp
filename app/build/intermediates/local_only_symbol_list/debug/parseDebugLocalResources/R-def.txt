@@ -36,8 +36,10 @@ color teal_200
 color teal_700
 color white
 drawable button_background
+drawable floating_button_background
 drawable ic_clock
 drawable ic_launcher_foreground
+drawable ic_stop_record
 drawable record_area_background
 drawable status_completed_background
 drawable status_error_background
@@ -55,6 +57,7 @@ id btn_back
 id btn_cancel
 id btn_cancel_record
 id btn_cancel_setting
+id btn_check_accessibility
 id btn_confirm
 id btn_confirm_setting
 id btn_delete_task
@@ -65,6 +68,7 @@ id btn_pause_record
 id btn_record_action
 id btn_save_notification_settings
 id btn_save_record
+id btn_select_other_app
 id btn_set_time
 id btn_start_punch
 id btn_start_record
@@ -79,6 +83,7 @@ id iv_app_icon
 id layout_gesture_feedback
 id nav_host_fragment_content_main
 id rv_app_list
+id rv_apps
 id rv_punch_log
 id rv_task_list
 id spinner_app_selection
@@ -94,6 +99,8 @@ id time_picker_end
 id time_picker_start
 id toolbar
 id tv_app_name
+id tv_author
+id tv_current_selection
 id tv_log_date
 id tv_log_status
 id tv_log_time
@@ -104,7 +111,9 @@ id tv_record_status
 id tv_task_app_name
 id tv_task_interval
 id tv_task_time_range
+id tv_version
 layout activity_main
+layout floating_record_button
 layout fragment_app_selection
 layout fragment_home
 layout fragment_notification

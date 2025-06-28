@@ -8,6 +8,133 @@
     android:layout_marginBottom="80dp"
     tools:context=".ui.appselection.AppSelectionFragment">
 
+    <TextView
+        style="@style/TitleTextStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="选择打卡软件"
+        android:gravity="center"
+        android:layout_marginBottom="16dp" />
+
+    <!-- 常用应用卡片 -->
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:text="常用打卡软件"
+                android:layout_marginBottom="8dp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_apps"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scrollbars="vertical" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 选择其他应用卡片 -->
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:text="其他应用"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择设备上已安装的其他应用作为打卡软件"
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/btn_select_other_app"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="选择其他应用"
+                android:background="@drawable/button_background"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 无障碍服务检查卡片 -->
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:text="无障碍服务"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="自动打卡功能需要无障碍服务支持"
+                android:textSize="14sp"
+                android:textColor="@color/secondary_text"
+                android:layout_marginBottom="16dp" />
+
+            <Button
+                android:id="@+id/btn_check_accessibility"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="检查无障碍服务"
+                android:background="@drawable/button_background"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- 当前选择显示 -->
+    <androidx.cardview.widget.CardView
+        style="@style/CardViewStyle"
+        android:layout_marginTop="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                style="@style/TitleTextStyle"
+                android:text="当前选择"
+                android:layout_marginBottom="8dp" />
+
+            <TextView
+                android:id="@+id/tv_current_selection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="未选择应用"
+                android:textSize="16sp"
+                android:padding="8dp"
+                android:background="@drawable/status_pending_background"
+                android:textColor="@color/white" />
+
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

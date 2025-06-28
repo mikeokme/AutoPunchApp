@@ -14,6 +14,7 @@ import com.example.autopunchapp.model.Action
 import com.example.autopunchapp.model.ActionType
 import com.example.autopunchapp.model.PunchAction
 import com.example.autopunchapp.utils.PreferenceManager
+import java.util.*
 
 /**
  * 自动打卡无障碍服务
@@ -23,8 +24,28 @@ class AutoPunchAccessibilityService : AccessibilityService() {
     companion object {
         private const val TAG = "AutoPunchAccessibilityService"
         private var instance: AutoPunchAccessibilityService? = null
+        private var isRecording = false
+        private val recordedActions = mutableListOf<Action>()
+        private var recordingStartTime = 0L
         
         fun getInstance(): AutoPunchAccessibilityService? = instance
+        
+        fun startRecording() {
+            isRecording = true
+            recordingStartTime = System.currentTimeMillis()
+            recordedActions.clear()
+            Log.d(TAG, "开始录制用户操作")
+        }
+        
+        fun stopRecording(): List<Action> {
+            isRecording = false
+            val actions = recordedActions.toList()
+            recordedActions.clear()
+            Log.d(TAG, "停止录制，共录制 ${actions.size} 个操作")
+            return actions
+        }
+        
+        fun isCurrentlyRecording(): Boolean = isRecording
     }
     
     private lateinit var preferenceManager: PreferenceManager
@@ -38,13 +59,12 @@ class AutoPunchAccessibilityService : AccessibilityService() {
         Log.d(TAG, "无障碍服务已连接")
         
         // 配置无障碍服务
-        val info = AccessibilityServiceInfo()
-        info.apply {
+        val info = AccessibilityServiceInfo().apply {
             eventTypes = AccessibilityEvent.TYPES_ALL_MASK
-            feedbackType = AccessibilityServiceInfo.FEEDBACK_ALL_MASK
-            notificationTimeout = 100
+            feedbackType = AccessibilityServiceInfo.FEEDBACK_GENERIC
             flags = AccessibilityServiceInfo.FLAG_REPORT_VIEW_IDS or
                     AccessibilityServiceInfo.FLAG_RETRIEVE_INTERACTIVE_WINDOWS
+            notificationTimeout = 100
         }
         
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -55,14 +75,25 @@ class AutoPunchAccessibilityService : AccessibilityService() {
     }
     
     override fun onAccessibilityEvent(event: AccessibilityEvent) {
-        // 处理无障碍事件
-        when (event.eventType) {
-            AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED -> {
-                handleWindowStateChanged(event)
+        if (!isRecording) return
+        
+        try {
+            when (event.eventType) {
+                AccessibilityEvent.TYPE_VIEW_CLICKED -> {
+                    recordClickAction(event)
+                }
+                AccessibilityEvent.TYPE_VIEW_TEXT_CHANGED -> {
+                    recordTextInputAction(event)
+                }
+                AccessibilityEvent.TYPE_VIEW_SCROLLED -> {
+                    recordScrollAction(event)
+                }
+                AccessibilityEvent.TYPE_WINDOW_STATE_CHANGED -> {
+                    recordWindowChangeAction(event)
+                }
             }
-            AccessibilityEvent.TYPE_WINDOW_CONTENT_CHANGED -> {
-                handleWindowContentChanged(event)
-            }
+        } catch (e: Exception) {
+            Log.e(TAG, "处理无障碍事件时出错", e)
         }
     }
     
@@ -218,5 +249,68 @@ class AutoPunchAccessibilityService : AccessibilityService() {
         
         Log.d(TAG, "未找到可点击的按钮ID: $viewId")
         return false
+    }
+    
+    private fun recordClickAction(event: AccessibilityEvent) {
+        val nodeInfo = event.source ?: return
+        val bounds = Rect()
+        nodeInfo.getBoundsInScreen(bounds)
+        val centerX = (bounds.left + bounds.right) / 2f
+        val centerY = (bounds.top + bounds.bottom) / 2f
+        
+        val action = Action(
+            type = ActionType.CLICK,
+            x = centerX,
+            y = centerY,
+            duration = 100
+        )
+        recordedActions.add(action)
+        Log.d(TAG, "记录点击操作: ${nodeInfo.text}")
+    }
+    
+    private fun recordTextInputAction(event: AccessibilityEvent) {
+        val nodeInfo = event.source ?: return
+        val bounds = Rect()
+        nodeInfo.getBoundsInScreen(bounds)
+        val centerX = (bounds.left + bounds.right) / 2f
+        val centerY = (bounds.top + bounds.bottom) / 2f
+        
+        val action = Action(
+            type = ActionType.CLICK,
+            x = centerX,
+            y = centerY,
+            duration = 100
+        )
+        recordedActions.add(action)
+        Log.d(TAG, "记录文本输入: ${event.text?.joinToString("")}")
+    }
+    
+    private fun recordScrollAction(event: AccessibilityEvent) {
+        val nodeInfo = event.source ?: return
+        val bounds = Rect()
+        nodeInfo.getBoundsInScreen(bounds)
+        val centerX = (bounds.left + bounds.right) / 2f
+        val centerY = (bounds.top + bounds.bottom) / 2f
+        
+        val action = Action(
+            type = ActionType.SWIPE,
+            x = centerX,
+            y = centerY,
+            duration = 500
+        )
+        recordedActions.add(action)
+        Log.d(TAG, "记录滚动操作")
+    }
+    
+    private fun recordWindowChangeAction(event: AccessibilityEvent) {
+        // 窗口变化不需要具体的坐标，使用默认值
+        val action = Action(
+            type = ActionType.WAIT,
+            x = 0f,
+            y = 0f,
+            duration = 1000
+        )
+        recordedActions.add(action)
+        Log.d(TAG, "记录窗口变化: ${event.text?.joinToString("")}")
     }
 } 

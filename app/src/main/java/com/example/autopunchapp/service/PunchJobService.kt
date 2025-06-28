@@ -29,26 +29,51 @@ class PunchJobService : JobService() {
     }
     
     override fun onStartJob(params: JobParameters?): Boolean {
-        Log.d(TAG, "开始执行打卡任务")
+        Log.d(TAG, "PunchJobService started")
         
-        // 检查是否有需要执行的打卡任务
-        val tasks = preferenceManager.getPunchTasks()
-        val currentTime = Calendar.getInstance()
+        // 获取打卡任务
+        val tasks = PreferenceManager(this).getPunchTasks()
         
-        for (task in tasks) {
-            if (task.isEnabled && shouldExecuteTask(task, currentTime)) {
-                executePunchTask(task)
-            }
+        // 检查是否有任务需要执行
+        if (tasks.isEmpty()) {
+            Log.d(TAG, "No punch tasks found")
+            jobFinished(params, false)
+            return false
         }
         
-        // 任务执行完成
-        jobFinished(params, false)
+        // 执行打卡任务
+        executePunchTasks(tasks, params)
+        
         return true
     }
     
     override fun onStopJob(params: JobParameters?): Boolean {
         Log.d(TAG, "打卡任务被停止")
         return false
+    }
+    
+    private fun executePunchTasks(tasks: List<PunchTask>, params: JobParameters?) {
+        // 检查上次打卡时间，避免重复打卡
+        val lastPunchTime = PreferenceManager(this).getLastPunchTime()
+        val currentTime = java.text.SimpleDateFormat("HH:mm", java.util.Locale.getDefault()).format(java.util.Date())
+        
+        if (lastPunchTime == currentTime) {
+            Log.d(TAG, "Already punched today at $currentTime")
+            jobFinished(params, false)
+            return
+        }
+        
+        // 执行打卡逻辑
+        for (task in tasks) {
+            if (task.isEnabled) {
+                Log.d(TAG, "Executing punch task: ${task.appName}")
+                // 这里添加具体的打卡逻辑
+                // 例如：启动目标应用并执行打卡操作
+            }
+        }
+        
+        // 标记任务完成
+        jobFinished(params, false)
     }
     
     /**

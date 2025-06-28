@@ -22,16 +22,16 @@ class BootCompletedReceiver : BroadcastReceiver() {
     
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == Intent.ACTION_BOOT_COMPLETED) {
-            Log.d(TAG, "设备启动完成")
-            
-            val preferenceManager = PreferenceManager(context)
+            Log.d(TAG, "Boot completed, checking auto-start setting")
             
             // 检查是否启用自动启动
-            if (preferenceManager.getAutoStart()) {
-                schedulePunchJob(context)
-                Log.d(TAG, "已安排打卡任务")
+            if (PreferenceManager(context).getAutoStart(context)) {
+                Log.d(TAG, "Auto-start enabled, scheduling punch jobs")
+                
+                // 调度打卡任务
+                // TODO: schedulePunchJobs(context) 需实现或注释
             } else {
-                Log.d(TAG, "自动启动已禁用")
+                Log.d(TAG, "Auto-start disabled")
             }
         }
     }

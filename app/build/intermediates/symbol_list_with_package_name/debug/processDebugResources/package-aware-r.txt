@@ -3093,6 +3093,7 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable floating_button_background
 drawable ic_arrow_back_black_24
 drawable ic_call_answer
 drawable ic_call_answer_low
@@ -3113,6 +3114,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable ic_stop_record
 drawable indeterminate_static
 drawable m3_avd_hide_password
 drawable m3_avd_show_password
@@ -3308,6 +3310,7 @@ id btn_back
 id btn_cancel
 id btn_cancel_record
 id btn_cancel_setting
+id btn_check_accessibility
 id btn_confirm
 id btn_confirm_setting
 id btn_delete_task
@@ -3318,6 +3321,7 @@ id btn_pause_record
 id btn_record_action
 id btn_save_notification_settings
 id btn_save_record
+id btn_select_other_app
 id btn_set_time
 id btn_start_punch
 id btn_start_record
@@ -3607,6 +3611,7 @@ id rounded
 id row_index_key
 id rtl
 id rv_app_list
+id rv_apps
 id rv_punch_log
 id rv_task_list
 id save_non_transition_alpha
@@ -3736,6 +3741,8 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tv_app_name
+id tv_author
+id tv_current_selection
 id tv_log_date
 id tv_log_status
 id tv_log_time
@@ -3746,6 +3753,7 @@ id tv_record_status
 id tv_task_app_name
 id tv_task_interval
 id tv_task_time_range
+id tv_version
 id unchecked
 id uniform
 id unlabeled
@@ -3903,6 +3911,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout floating_record_button
 layout fragment_app_selection
 layout fragment_home
 layout fragment_notification

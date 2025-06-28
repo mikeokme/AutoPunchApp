@@ -38,6 +38,9 @@ public final class FragmentHomeBinding implements ViewBinding {
   public final Spinner spinnerAppSelection;
 
   @NonNull
+  public final TextView tvAuthor;
+
+  @NonNull
   public final TextView tvPunchStatus;
 
   @NonNull
@@ -46,19 +49,25 @@ public final class FragmentHomeBinding implements ViewBinding {
   @NonNull
   public final TextView tvRecordStatus;
 
+  @NonNull
+  public final TextView tvVersion;
+
   private FragmentHomeBinding(@NonNull NestedScrollView rootView, @NonNull Button btnRecordAction,
       @NonNull Button btnSetTime, @NonNull Button btnStartPunch, @NonNull RecyclerView rvPunchLog,
-      @NonNull Spinner spinnerAppSelection, @NonNull TextView tvPunchStatus,
-      @NonNull TextView tvPunchTime, @NonNull TextView tvRecordStatus) {
+      @NonNull Spinner spinnerAppSelection, @NonNull TextView tvAuthor,
+      @NonNull TextView tvPunchStatus, @NonNull TextView tvPunchTime,
+      @NonNull TextView tvRecordStatus, @NonNull TextView tvVersion) {
     this.rootView = rootView;
     this.btnRecordAction = btnRecordAction;
     this.btnSetTime = btnSetTime;
     this.btnStartPunch = btnStartPunch;
     this.rvPunchLog = rvPunchLog;
     this.spinnerAppSelection = spinnerAppSelection;
+    this.tvAuthor = tvAuthor;
     this.tvPunchStatus = tvPunchStatus;
     this.tvPunchTime = tvPunchTime;
     this.tvRecordStatus = tvRecordStatus;
+    this.tvVersion = tvVersion;
   }
 
   @Override
@@ -118,6 +127,12 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_author;
+      TextView tvAuthor = ViewBindings.findChildViewById(rootView, id);
+      if (tvAuthor == null) {
+        break missingId;
+      }
+
       id = R.id.tv_punch_status;
       TextView tvPunchStatus = ViewBindings.findChildViewById(rootView, id);
       if (tvPunchStatus == null) {
@@ -136,9 +151,15 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_version;
+      TextView tvVersion = ViewBindings.findChildViewById(rootView, id);
+      if (tvVersion == null) {
+        break missingId;
+      }
+
       return new FragmentHomeBinding((NestedScrollView) rootView, btnRecordAction, btnSetTime,
-          btnStartPunch, rvPunchLog, spinnerAppSelection, tvPunchStatus, tvPunchTime,
-          tvRecordStatus);
+          btnStartPunch, rvPunchLog, spinnerAppSelection, tvAuthor, tvPunchStatus, tvPunchTime,
+          tvRecordStatus, tvVersion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

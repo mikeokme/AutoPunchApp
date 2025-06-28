@@ -142,5 +142,31 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- 版本号和作者信息 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/tv_version"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="版本号：bate1.0"
+                android:textSize="14sp"
+                android:textColor="#888888" />
+
+            <TextView
+                android:id="@+id/tv_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="作者：@醉生梦死"
+                android:textSize="14sp"
+                android:textColor="#888888" />
+        </LinearLayout>
+
     </LinearLayout>
 </androidx.core.widget.NestedScrollView>

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.RecyclerView;
@@ -25,7 +26,13 @@ public final class FragmentAppSelectionBinding implements ViewBinding {
   public final Button btnCancel;
 
   @NonNull
+  public final Button btnCheckAccessibility;
+
+  @NonNull
   public final Button btnConfirm;
+
+  @NonNull
+  public final Button btnSelectOtherApp;
 
   @NonNull
   public final TextInputEditText etSearchApp;
@@ -33,14 +40,26 @@ public final class FragmentAppSelectionBinding implements ViewBinding {
   @NonNull
   public final RecyclerView rvAppList;
 
+  @NonNull
+  public final RecyclerView rvApps;
+
+  @NonNull
+  public final TextView tvCurrentSelection;
+
   private FragmentAppSelectionBinding(@NonNull LinearLayout rootView, @NonNull Button btnCancel,
-      @NonNull Button btnConfirm, @NonNull TextInputEditText etSearchApp,
-      @NonNull RecyclerView rvAppList) {
+      @NonNull Button btnCheckAccessibility, @NonNull Button btnConfirm,
+      @NonNull Button btnSelectOtherApp, @NonNull TextInputEditText etSearchApp,
+      @NonNull RecyclerView rvAppList, @NonNull RecyclerView rvApps,
+      @NonNull TextView tvCurrentSelection) {
     this.rootView = rootView;
     this.btnCancel = btnCancel;
+    this.btnCheckAccessibility = btnCheckAccessibility;
     this.btnConfirm = btnConfirm;
+    this.btnSelectOtherApp = btnSelectOtherApp;
     this.etSearchApp = etSearchApp;
     this.rvAppList = rvAppList;
+    this.rvApps = rvApps;
+    this.tvCurrentSelection = tvCurrentSelection;
   }
 
   @Override
@@ -76,9 +95,21 @@ public final class FragmentAppSelectionBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_check_accessibility;
+      Button btnCheckAccessibility = ViewBindings.findChildViewById(rootView, id);
+      if (btnCheckAccessibility == null) {
+        break missingId;
+      }
+
       id = R.id.btn_confirm;
       Button btnConfirm = ViewBindings.findChildViewById(rootView, id);
       if (btnConfirm == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_select_other_app;
+      Button btnSelectOtherApp = ViewBindings.findChildViewById(rootView, id);
+      if (btnSelectOtherApp == null) {
         break missingId;
       }
 
@@ -94,8 +125,21 @@ public final class FragmentAppSelectionBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentAppSelectionBinding((LinearLayout) rootView, btnCancel, btnConfirm,
-          etSearchApp, rvAppList);
+      id = R.id.rv_apps;
+      RecyclerView rvApps = ViewBindings.findChildViewById(rootView, id);
+      if (rvApps == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_current_selection;
+      TextView tvCurrentSelection = ViewBindings.findChildViewById(rootView, id);
+      if (tvCurrentSelection == null) {
+        break missingId;
+      }
+
+      return new FragmentAppSelectionBinding((LinearLayout) rootView, btnCancel,
+          btnCheckAccessibility, btnConfirm, btnSelectOtherApp, etSearchApp, rvAppList, rvApps,
+          tvCurrentSelection);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

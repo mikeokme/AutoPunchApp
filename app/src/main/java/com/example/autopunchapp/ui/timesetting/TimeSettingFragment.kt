@@ -18,7 +18,6 @@ class TimeSettingFragment : Fragment() {
     private var _binding: FragmentTimeSettingBinding? = null
     private val binding get() = _binding!!
     
-    private lateinit var preferenceManager: PreferenceManager
     private var startHour = 9
     private var startMinute = 0
     private var endHour = 18
@@ -36,19 +35,17 @@ class TimeSettingFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         
-        preferenceManager = PreferenceManager(requireContext())
-        
         loadCurrentSettings()
         setupListeners()
     }
     
     private fun loadCurrentSettings() {
         // 加载当前设置
-        val startTime = preferenceManager.getStartTime()
-        val endTime = preferenceManager.getEndTime()
-        val minInterval = preferenceManager.getMinInterval()
-        val maxInterval = preferenceManager.getMaxInterval()
-        val randomEnabled = preferenceManager.getRandomEnabled()
+        val startTime = PreferenceManager(requireContext()).getStartTime()
+        val endTime = PreferenceManager(requireContext()).getEndTime()
+        val minInterval = PreferenceManager(requireContext()).getMinInterval()
+        val maxInterval = PreferenceManager(requireContext()).getMaxInterval()
+        val randomEnabled = PreferenceManager(requireContext()).getRandomEnabled()
         
         // 解析时间
         val startParts = startTime.split(":")
@@ -119,7 +116,7 @@ class TimeSettingFragment : Fragment() {
         val endTime = String.format("%02d:%02d", endHour, endMinute)
         val randomEnabled = binding.switchRandomPunch.isChecked
         
-        preferenceManager.saveTimeSettings(startTime, endTime, minInterval, maxInterval, randomEnabled)
+        PreferenceManager(requireContext()).saveTimeSettings(startTime, endTime, minInterval, maxInterval, randomEnabled)
         
         Toast.makeText(requireContext(), "时间设置已保存", Toast.LENGTH_SHORT).show()
         
