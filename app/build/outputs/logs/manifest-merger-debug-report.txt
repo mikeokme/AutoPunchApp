@@ -121,9 +121,9 @@ MERGED from [androidx.startup:startup-runtime:1.1.1] C:\Users\yangbin\.gradle\ca
 	android:label
 		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:15:9-41
 	android:roundIcon
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:16:9-54
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:16:9-47
 	android:icon
-		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:14:9-43
+		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:14:9-42
 	android:allowBackup
 		ADDED from C:\Users\yangbin\yy\app\src\main\AndroidManifest.xml:13:9-35
 	android:theme

@@ -1,19 +1,23 @@
 [
     {
+        "merged": "com.example.autopunchapp-debug-47:/drawable_ic_clock.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/drawable/ic_clock.xml"
+    },
+    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_activity_main.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_item_app.xml.flat",
+        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\item_app.xml"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_fragment_time_setting.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\fragment_time_setting.xml"
     },
     {
-        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\layout_item_app.xml.flat",
-        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\layout\\item_app.xml"
+        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\mipmap-mdpi\\ic_launcher.png"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\mipmap-xhdpi_ic_launcher.png.flat",
@@ -70,10 +74,6 @@
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\menu_menu_main.xml.flat",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-main-49:\\menu\\menu_main.xml"
-    },
-    {
-        "merged": "com.example.autopunchapp-debug-47:/layout_activity_main.xml.flat",
-        "source": "com.example.autopunchapp-main-49:/layout/activity_main.xml"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.14.2\\com.example.autopunchapp-debug-47:\\xml_accessibility_service_config.xml.flat",
