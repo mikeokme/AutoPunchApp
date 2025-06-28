@@ -19,6 +19,7 @@ import com.example.autopunchapp.databinding.FragmentHomeBinding
 import com.example.autopunchapp.model.AppInfo
 import com.example.autopunchapp.model.PunchLog
 import com.example.autopunchapp.ui.recordaction.RecordActionFragment
+import com.example.autopunchapp.ui.script.ScriptEditorFragment
 import com.example.autopunchapp.ui.timesetting.TimeSettingFragment
 import com.example.autopunchapp.utils.AccessibilityUtil
 import com.example.autopunchapp.utils.AppListUtil
@@ -178,6 +179,52 @@ class HomeFragment : Fragment() {
                 } catch (e: Exception) {
                     Log.e(TAG, "btnRecordAction onClick: Error", e)
                     Toast.makeText(requireContext(), "页面跳转失败: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            // 脚本编辑器按钮
+            binding.btnScriptEditor.setOnClickListener {
+                try {
+                    parentFragmentManager.beginTransaction()
+                        .replace(R.id.nav_host_fragment_content_main, ScriptEditorFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit()
+                } catch (e: Exception) {
+                    Log.e(TAG, "btnScriptEditor onClick: Error", e)
+                    Toast.makeText(requireContext(), "页面跳转失败: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            // 脚本市场按钮
+            binding.btnScriptMarket.setOnClickListener {
+                try {
+                    Toast.makeText(requireContext(), "脚本市场功能开发中...", Toast.LENGTH_SHORT).show()
+                    // TODO: 实现脚本市场功能
+                } catch (e: Exception) {
+                    Log.e(TAG, "btnScriptMarket onClick: Error", e)
+                    Toast.makeText(requireContext(), "功能调用失败: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            // 我的脚本按钮
+            binding.btnMyScripts.setOnClickListener {
+                try {
+                    Toast.makeText(requireContext(), "我的脚本功能开发中...", Toast.LENGTH_SHORT).show()
+                    // TODO: 实现我的脚本功能
+                } catch (e: Exception) {
+                    Log.e(TAG, "btnMyScripts onClick: Error", e)
+                    Toast.makeText(requireContext(), "功能调用失败: ${e.message}", Toast.LENGTH_SHORT).show()
+                }
+            }
+
+            // 执行日志按钮
+            binding.btnScriptLogs.setOnClickListener {
+                try {
+                    Toast.makeText(requireContext(), "执行日志功能开发中...", Toast.LENGTH_SHORT).show()
+                    // TODO: 实现执行日志功能
+                } catch (e: Exception) {
+                    Log.e(TAG, "btnScriptLogs onClick: Error", e)
+                    Toast.makeText(requireContext(), "功能调用失败: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
         } catch (e: Exception) {

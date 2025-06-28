@@ -10,36 +10,42 @@
 ## 📱 项目简介 / Project Description / プロジェクト概要
 
 ### 🇨🇳 中文
-自动打卡应用是一款基于Android无障碍服务的智能打卡工具，支持多种主流打卡应用的自动化操作。通过录制用户的操作轨迹，应用可以在指定时间段内自动执行打卡动作，帮助用户避免忘记打卡的问题。
+自动打卡应用是一款基于Android无障碍服务的智能自动化平台，支持多种主流应用的自动化操作。通过录制用户的操作轨迹或编写JavaScript脚本，应用可以在指定时间段内自动执行各种操作，帮助用户实现自动化任务。
 
 **主要功能：**
-- 🎯 支持多种打卡应用（钉钉、企业微信、微信等）
-- ⏰ 智能时间设置，支持随机间隔打卡
+- 🎯 支持多种应用自动化（钉钉、企业微信、微信等）
+- ⏰ 智能时间设置，支持随机间隔执行
 - 📝 操作轨迹录制与回放
+- 🔧 JavaScript脚本编辑器，支持自定义自动化脚本
+- 📚 脚本市场，分享和下载自动化脚本
 - 🔔 智能提醒与通知
-- 📊 打卡记录与统计
+- 📊 执行记录与统计
 - ⚙️ 个性化设置
 
 ### 🇺🇸 English
-Auto Punch-in App is an intelligent attendance tool based on Android Accessibility Service, supporting automated operations for various mainstream punch-in applications. By recording user operation trajectories, the app can automatically execute punch-in actions within specified time periods, helping users avoid forgetting to punch in.
+Auto Punch-in App is an intelligent automation platform based on Android Accessibility Service, supporting automated operations for various mainstream applications. By recording user operation trajectories or writing JavaScript scripts, the app can automatically execute various operations within specified time periods, helping users achieve automation tasks.
 
 **Key Features:**
-- 🎯 Support for multiple punch-in apps (DingTalk, WeChat Work, WeChat, etc.)
-- ⏰ Smart time settings with random interval punch-in
+- 🎯 Support for multiple app automation (DingTalk, WeChat Work, WeChat, etc.)
+- ⏰ Smart time settings with random interval execution
 - 📝 Operation trajectory recording and playback
+- 🔧 JavaScript script editor supporting custom automation scripts
+- 📚 Script marketplace for sharing and downloading automation scripts
 - 🔔 Smart reminders and notifications
-- 📊 Punch-in records and statistics
+- 📊 Execution records and statistics
 - ⚙️ Personalized settings
 
 ### 🇯🇵 日本語
-自動出勤アプリは、Androidアクセシビリティサービスをベースにしたインテリジェントな出勤ツールで、様々な主流の出勤アプリの自動操作をサポートしています。ユーザーの操作軌跡を記録することで、指定された時間帯内で自動的に出勤アクションを実行し、ユーザーが出勤を忘れる問題を解決します。
+自動出勤アプリは、Androidアクセシビリティサービスをベースにしたインテリジェントな自動化プラットフォームで、様々な主流アプリの自動操作をサポートしています。ユーザーの操作軌跡を記録したり、JavaScriptスクリプトを書いたりすることで、指定された時間帯内で自動的に様々な操作を実行し、ユーザーの自動化タスクを実現します。
 
 **主な機能：**
-- 🎯 複数の出勤アプリをサポート（DingTalk、WeChat Work、WeChatなど）
-- ⏰ ランダム間隔出勤をサポートするスマート時間設定
+- 🎯 複数のアプリ自動化をサポート（DingTalk、WeChat Work、WeChatなど）
+- ⏰ ランダム間隔実行をサポートするスマート時間設定
 - 📝 操作軌跡の記録と再生
+- 🔧 カスタム自動化スクリプトをサポートするJavaScriptスクリプトエディタ
+- 📚 自動化スクリプトの共有とダウンロードのためのスクリプト市場
 - 🔔 スマートリマインダーと通知
-- 📊 出勤記録と統計
+- 📊 実行記録と統計
 - ⚙️ パーソナライズ設定
 
 ---

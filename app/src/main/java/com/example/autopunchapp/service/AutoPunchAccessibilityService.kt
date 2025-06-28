@@ -158,12 +158,40 @@ class AutoPunchAccessibilityService : AccessibilityService() {
      */
     private fun executeAction(action: Action) {
         when (action.type) {
-            ActionType.CLICK -> performClick(action.x, action.y)
-            ActionType.LONG_PRESS -> performLongPress(action.x, action.y, action.duration)
-            ActionType.SWIPE -> performSwipe(action.x, action.y, action.duration)
-            ActionType.WAIT -> {
-                // 等待操作，不需要执行任何手势
-                Log.d(TAG, "等待 ${action.duration}ms")
+            ActionType.CLICK_BY_ID -> {
+                action.actionParams["id"]?.let { findAndClickButtonById(it) }
+            }
+            ActionType.CLICK_BY_TEXT -> {
+                action.actionParams["text"]?.let { findAndClickButton(it) }
+            }
+            ActionType.CLICK_AT -> {
+                val x = action.actionParams["x"]?.toFloatOrNull() ?: 0f
+                val y = action.actionParams["y"]?.toFloatOrNull() ?: 0f
+                performClick(x, y)
+            }
+            ActionType.INPUT_TEXT -> {
+                val text = action.actionParams["text"] ?: ""
+                inputText(text)
+            }
+            ActionType.SWIPE -> {
+                val x1 = action.actionParams["x1"]?.toFloatOrNull() ?: 0f
+                val y1 = action.actionParams["y1"]?.toFloatOrNull() ?: 0f
+                val x2 = action.actionParams["x2"]?.toFloatOrNull() ?: 0f
+                val y2 = action.actionParams["y2"]?.toFloatOrNull() ?: 0f
+                val duration = action.actionParams["duration"]?.toLongOrNull() ?: 500L
+                performSwipeCustom(x1, y1, x2, y2, duration)
+            }
+            ActionType.DELAY -> {
+                val ms = action.actionParams["ms"]?.toLongOrNull() ?: 1000L
+                Thread.sleep(ms)
+            }
+            ActionType.LAUNCH_APP -> {
+                val pkg = action.actionParams["pkg"] ?: return
+                launchApp(pkg)
+            }
+            ActionType.PRESS_KEY -> {
+                val key = action.actionParams["key"] ?: return
+                pressKey(key)
             }
         }
     }
@@ -253,64 +281,76 @@ class AutoPunchAccessibilityService : AccessibilityService() {
     
     private fun recordClickAction(event: AccessibilityEvent) {
         val nodeInfo = event.source ?: return
-        val bounds = Rect()
-        nodeInfo.getBoundsInScreen(bounds)
-        val centerX = (bounds.left + bounds.right) / 2f
-        val centerY = (bounds.top + bounds.bottom) / 2f
-        
-        val action = Action(
-            type = ActionType.CLICK,
-            x = centerX,
-            y = centerY,
-            duration = 100
-        )
+        val action = when {
+            !nodeInfo.viewIdResourceName.isNullOrEmpty() -> Action(ActionType.CLICK_BY_ID, mapOf("id" to nodeInfo.viewIdResourceName!!))
+            !nodeInfo.text.isNullOrEmpty() -> Action(ActionType.CLICK_BY_TEXT, mapOf("text" to nodeInfo.text.toString()))
+            !nodeInfo.contentDescription.isNullOrEmpty() -> Action(ActionType.CLICK_BY_TEXT, mapOf("text" to nodeInfo.contentDescription.toString()))
+            else -> {
+                val bounds = android.graphics.Rect()
+                nodeInfo.getBoundsInScreen(bounds)
+                val centerX = (bounds.left + bounds.right) / 2f
+                val centerY = (bounds.top + bounds.bottom) / 2f
+                Action(ActionType.CLICK_AT, mapOf("x" to centerX.toString(), "y" to centerY.toString()))
+            }
+        }
         recordedActions.add(action)
-        Log.d(TAG, "记录点击操作: ${nodeInfo.text}")
+        Log.d(TAG, "记录点击操作: $action")
     }
     
     private fun recordTextInputAction(event: AccessibilityEvent) {
         val nodeInfo = event.source ?: return
-        val bounds = Rect()
-        nodeInfo.getBoundsInScreen(bounds)
-        val centerX = (bounds.left + bounds.right) / 2f
-        val centerY = (bounds.top + bounds.bottom) / 2f
-        
-        val action = Action(
-            type = ActionType.CLICK,
-            x = centerX,
-            y = centerY,
-            duration = 100
-        )
+        val text = event.text?.joinToString("") ?: ""
+        val action = Action(ActionType.INPUT_TEXT, mapOf("text" to text))
         recordedActions.add(action)
-        Log.d(TAG, "记录文本输入: ${event.text?.joinToString("")}")
+        Log.d(TAG, "记录文本输入: $action")
     }
     
     private fun recordScrollAction(event: AccessibilityEvent) {
         val nodeInfo = event.source ?: return
-        val bounds = Rect()
+        val bounds = android.graphics.Rect()
         nodeInfo.getBoundsInScreen(bounds)
         val centerX = (bounds.left + bounds.right) / 2f
         val centerY = (bounds.top + bounds.bottom) / 2f
-        
-        val action = Action(
-            type = ActionType.SWIPE,
-            x = centerX,
-            y = centerY,
-            duration = 500
-        )
+        // 这里只做简单滑动，实际可扩展为记录起止点
+        val action = Action(ActionType.SWIPE, mapOf("x1" to centerX.toString(), "y1" to centerY.toString(), "x2" to (centerX+100).toString(), "y2" to (centerY+100).toString(), "duration" to "500"))
         recordedActions.add(action)
-        Log.d(TAG, "记录滚动操作")
+        Log.d(TAG, "记录滚动操作: $action")
     }
     
     private fun recordWindowChangeAction(event: AccessibilityEvent) {
-        // 窗口变化不需要具体的坐标，使用默认值
-        val action = Action(
-            type = ActionType.WAIT,
-            x = 0f,
-            y = 0f,
-            duration = 1000
-        )
+        val action = Action(ActionType.DELAY, mapOf("ms" to "1000"))
         recordedActions.add(action)
-        Log.d(TAG, "记录窗口变化: ${event.text?.joinToString("")}")
+        Log.d(TAG, "记录窗口变化: $action")
+    }
+
+    private fun performSwipeCustom(x1: Float, y1: Float, x2: Float, y2: Float, duration: Long) {
+        val path = android.graphics.Path()
+        path.moveTo(x1, y1)
+        path.lineTo(x2, y2)
+        val gestureBuilder = android.accessibilityservice.GestureDescription.Builder()
+        gestureBuilder.addStroke(android.accessibilityservice.GestureDescription.StrokeDescription(path, 0, duration))
+        dispatchGesture(gestureBuilder.build(), null, null)
+        android.util.Log.d(TAG, "执行自定义滑动: ($x1, $y1) -> ($x2, $y2) 持续 ${duration}ms")
+    }
+
+    private fun inputText(text: String) {
+        // 可根据实际需求实现文本输入
+        android.util.Log.d(TAG, "模拟输入文本: $text")
+    }
+
+    private fun launchApp(pkg: String) {
+        try {
+            val intent = applicationContext.packageManager.getLaunchIntentForPackage(pkg)
+            intent?.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+            applicationContext.startActivity(intent)
+            android.util.Log.d(TAG, "启动应用: $pkg")
+        } catch (e: Exception) {
+            android.util.Log.e(TAG, "启动应用失败: $pkg", e)
+        }
+    }
+
+    private fun pressKey(key: String) {
+        // 可根据实际需求实现按键模拟
+        android.util.Log.d(TAG, "模拟按键: $key")
     }
 } 

@@ -23,7 +23,19 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final NestedScrollView rootView;
 
   @NonNull
+  public final Button btnMyScripts;
+
+  @NonNull
   public final Button btnRecordAction;
+
+  @NonNull
+  public final Button btnScriptEditor;
+
+  @NonNull
+  public final Button btnScriptLogs;
+
+  @NonNull
+  public final Button btnScriptMarket;
 
   @NonNull
   public final Button btnSetTime;
@@ -52,13 +64,19 @@ public final class FragmentHomeBinding implements ViewBinding {
   @NonNull
   public final TextView tvVersion;
 
-  private FragmentHomeBinding(@NonNull NestedScrollView rootView, @NonNull Button btnRecordAction,
-      @NonNull Button btnSetTime, @NonNull Button btnStartPunch, @NonNull RecyclerView rvPunchLog,
+  private FragmentHomeBinding(@NonNull NestedScrollView rootView, @NonNull Button btnMyScripts,
+      @NonNull Button btnRecordAction, @NonNull Button btnScriptEditor,
+      @NonNull Button btnScriptLogs, @NonNull Button btnScriptMarket, @NonNull Button btnSetTime,
+      @NonNull Button btnStartPunch, @NonNull RecyclerView rvPunchLog,
       @NonNull Spinner spinnerAppSelection, @NonNull TextView tvAuthor,
       @NonNull TextView tvPunchStatus, @NonNull TextView tvPunchTime,
       @NonNull TextView tvRecordStatus, @NonNull TextView tvVersion) {
     this.rootView = rootView;
+    this.btnMyScripts = btnMyScripts;
     this.btnRecordAction = btnRecordAction;
+    this.btnScriptEditor = btnScriptEditor;
+    this.btnScriptLogs = btnScriptLogs;
+    this.btnScriptMarket = btnScriptMarket;
     this.btnSetTime = btnSetTime;
     this.btnStartPunch = btnStartPunch;
     this.rvPunchLog = rvPunchLog;
@@ -97,9 +115,33 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.btn_my_scripts;
+      Button btnMyScripts = ViewBindings.findChildViewById(rootView, id);
+      if (btnMyScripts == null) {
+        break missingId;
+      }
+
       id = R.id.btn_record_action;
       Button btnRecordAction = ViewBindings.findChildViewById(rootView, id);
       if (btnRecordAction == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_script_editor;
+      Button btnScriptEditor = ViewBindings.findChildViewById(rootView, id);
+      if (btnScriptEditor == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_script_logs;
+      Button btnScriptLogs = ViewBindings.findChildViewById(rootView, id);
+      if (btnScriptLogs == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_script_market;
+      Button btnScriptMarket = ViewBindings.findChildViewById(rootView, id);
+      if (btnScriptMarket == null) {
         break missingId;
       }
 
@@ -157,9 +199,9 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentHomeBinding((NestedScrollView) rootView, btnRecordAction, btnSetTime,
-          btnStartPunch, rvPunchLog, spinnerAppSelection, tvAuthor, tvPunchStatus, tvPunchTime,
-          tvRecordStatus, tvVersion);
+      return new FragmentHomeBinding((NestedScrollView) rootView, btnMyScripts, btnRecordAction,
+          btnScriptEditor, btnScriptLogs, btnScriptMarket, btnSetTime, btnStartPunch, rvPunchLog,
+          spinnerAppSelection, tvAuthor, tvPunchStatus, tvPunchTime, tvRecordStatus, tvVersion);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

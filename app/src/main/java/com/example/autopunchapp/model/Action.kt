@@ -4,18 +4,13 @@ package com.example.autopunchapp.model
  * 动作类型枚举
  */
 enum class ActionType {
-    CLICK,      // 点击
-    LONG_PRESS, // 长按
-    SWIPE,      // 滑动
-    WAIT        // 等待
+    CLICK_BY_ID, CLICK_BY_TEXT, CLICK_AT, INPUT_TEXT, SWIPE, DELAY, LAUNCH_APP, PRESS_KEY
 }
 
 /**
  * 动作数据类
  */
 data class Action(
-    val type: ActionType,    // 动作类型
-    val x: Float,           // X坐标
-    val y: Float,           // Y坐标
-    val duration: Long = 100 // 持续时间（毫秒）
+    val type: ActionType,
+    val actionParams: Map<String, String> = emptyMap()
 ) 

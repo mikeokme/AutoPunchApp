@@ -1,8 +1,11 @@
 package com.example.autopunchapp.ui.recordaction
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.graphics.PixelFormat
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
@@ -13,6 +16,8 @@ import android.view.ViewGroup
 import android.view.WindowManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.autopunchapp.R
 import com.example.autopunchapp.databinding.FragmentRecordActionBinding
@@ -34,6 +39,11 @@ class RecordActionFragment : Fragment() {
     private var isRecording = false
     private var recordingStartTime = 0L
     private var selectedAppPackageName = ""
+    
+    companion object {
+        private const val PERMISSION_REQUEST_CODE = 1001
+        private const val OVERLAY_PERMISSION_REQUEST_CODE = 1002
+    }
     
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -74,7 +84,7 @@ class RecordActionFragment : Fragment() {
             }
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                startRecording()
+                checkAndRequestPermissions()
             }
         }
         
@@ -97,6 +107,68 @@ class RecordActionFragment : Fragment() {
         binding.btnSaveRecord.setOnClickListener {
             saveRecording()
         }
+    }
+    
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkAndRequestPermissions() {
+        // 检查启动其他应用的权限
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            // 检查是否有启动其他应用的权限
+            val canStartApp = checkCanStartApp()
+            if (!canStartApp) {
+                showStartAppPermissionDialog()
+                return
+            }
+        }
+        
+        // 检查悬浮窗权限
+        if (!Settings.canDrawOverlays(requireContext())) {
+            showOverlayPermissionDialog()
+            return
+        }
+        
+        // 所有权限都已获取，开始录制
+        startRecording()
+    }
+    
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun checkCanStartApp(): Boolean {
+        val selectedAppPackageName = preferenceManager.getSelectedApp(requireContext())
+        if (selectedAppPackageName.isEmpty()) {
+            Toast.makeText(requireContext(), "请先选择打卡应用", Toast.LENGTH_SHORT).show()
+            return false
+        }
+        
+        try {
+            val intent = requireContext().packageManager.getLaunchIntentForPackage(selectedAppPackageName)
+            return intent != null
+        } catch (e: Exception) {
+            return false
+        }
+    }
+    
+    @RequiresApi(Build.VERSION_CODES.M)
+    private fun showStartAppPermissionDialog() {
+        val builder = androidx.appcompat.app.AlertDialog.Builder(requireContext())
+        builder.setTitle("需要启动应用权限")
+            .setMessage("录制功能需要启动目标应用，请前往系统设置开启相关权限。")
+            .setPositiveButton("前往设置") { _, _ ->
+                // 打开应用设置页面
+                try {
+                    val intent = Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS)
+                    val uri = Uri.fromParts("package", requireContext().packageName, null)
+                    intent.data = uri
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    // 如果无法打开应用设置，则打开通用设置
+                    val intent = Intent(Settings.ACTION_SETTINGS)
+                    startActivity(intent)
+                }
+            }
+            .setNegativeButton("取消") { _, _ ->
+                Toast.makeText(requireContext(), "需要权限才能开始录制", Toast.LENGTH_SHORT).show()
+            }
+            .show()
     }
     
     @RequiresApi(Build.VERSION_CODES.M)
@@ -140,7 +212,7 @@ class RecordActionFragment : Fragment() {
                 
                 Toast.makeText(requireContext(), "已启动目标应用，开始录制", Toast.LENGTH_SHORT).show()
             } else {
-                Toast.makeText(requireContext(), "无法启动目标应用", Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireContext(), "无法启动目标应用，请检查应用是否已安装", Toast.LENGTH_SHORT).show()
                 stopRecording()
             }
         } catch (e: Exception) {
@@ -319,5 +391,34 @@ class RecordActionFragment : Fragment() {
         super.onDestroyView()
         hideFloatingButton()
         _binding = null
+    }
+    
+    override fun onResume() {
+        super.onResume()
+        // 当从设置页面返回时，重新检查权限
+        if (isRecording && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            checkAndRequestPermissions()
+        }
+    }
+    
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    // 权限已获取，继续检查其他权限
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                        checkAndRequestPermissions()
+                    }
+                } else {
+                    Toast.makeText(requireContext(), "需要权限才能开始录制", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 } 

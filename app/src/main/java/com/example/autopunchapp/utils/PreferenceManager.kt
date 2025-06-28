@@ -43,6 +43,21 @@ class PreferenceManager(context: Context) {
         private const val KEY_DAILY_REMINDER = "daily_reminder"
         private const val KEY_PUNCH_COMPLETED_NOTIFICATION = "punch_completed_notification"
         private const val KEY_REMINDER_TIME = "reminder_time"
+        
+        // 上班时间段相关
+        private const val KEY_WORK_START_TIME = "work_start_time"
+        private const val KEY_WORK_END_TIME = "work_end_time"
+        private const val KEY_WORK_MIN_INTERVAL = "work_min_interval"
+        private const val KEY_WORK_MAX_INTERVAL = "work_max_interval"
+        private const val KEY_WORK_RANDOM_ENABLED = "work_random_enabled"
+        
+        // 下班时间段相关
+        private const val KEY_OFF_START_TIME = "off_start_time"
+        private const val KEY_OFF_END_TIME = "off_end_time"
+        private const val KEY_OFF_MIN_INTERVAL = "off_min_interval"
+        private const val KEY_OFF_MAX_INTERVAL = "off_max_interval"
+        private const val KEY_OFF_RANDOM_ENABLED = "off_random_enabled"
+        
         private const val TAG = "PreferenceManager"
     }
 
@@ -175,6 +190,68 @@ class PreferenceManager(context: Context) {
 
     fun getRandomEnabled(): Boolean {
         return sharedPreferences.getBoolean(KEY_RANDOM_ENABLED, true)
+    }
+
+    // 上班时间段设置相关
+    fun saveWorkTimeSettings(startTime: String, endTime: String, minInterval: Int, maxInterval: Int, randomEnabled: Boolean) {
+        sharedPreferences.edit().apply {
+            putString(KEY_WORK_START_TIME, startTime)
+            putString(KEY_WORK_END_TIME, endTime)
+            putInt(KEY_WORK_MIN_INTERVAL, minInterval)
+            putInt(KEY_WORK_MAX_INTERVAL, maxInterval)
+            putBoolean(KEY_WORK_RANDOM_ENABLED, randomEnabled)
+        }.apply()
+    }
+
+    fun getWorkStartTime(): String {
+        return sharedPreferences.getString(KEY_WORK_START_TIME, "09:00") ?: "09:00"
+    }
+
+    fun getWorkEndTime(): String {
+        return sharedPreferences.getString(KEY_WORK_END_TIME, "09:30") ?: "09:30"
+    }
+
+    fun getWorkMinInterval(): Int {
+        return sharedPreferences.getInt(KEY_WORK_MIN_INTERVAL, 5)
+    }
+
+    fun getWorkMaxInterval(): Int {
+        return sharedPreferences.getInt(KEY_WORK_MAX_INTERVAL, 15)
+    }
+
+    fun getWorkRandomEnabled(): Boolean {
+        return sharedPreferences.getBoolean(KEY_WORK_RANDOM_ENABLED, true)
+    }
+
+    // 下班时间段设置相关
+    fun saveOffTimeSettings(startTime: String, endTime: String, minInterval: Int, maxInterval: Int, randomEnabled: Boolean) {
+        sharedPreferences.edit().apply {
+            putString(KEY_OFF_START_TIME, startTime)
+            putString(KEY_OFF_END_TIME, endTime)
+            putInt(KEY_OFF_MIN_INTERVAL, minInterval)
+            putInt(KEY_OFF_MAX_INTERVAL, maxInterval)
+            putBoolean(KEY_OFF_RANDOM_ENABLED, randomEnabled)
+        }.apply()
+    }
+
+    fun getOffStartTime(): String {
+        return sharedPreferences.getString(KEY_OFF_START_TIME, "18:00") ?: "18:00"
+    }
+
+    fun getOffEndTime(): String {
+        return sharedPreferences.getString(KEY_OFF_END_TIME, "18:30") ?: "18:30"
+    }
+
+    fun getOffMinInterval(): Int {
+        return sharedPreferences.getInt(KEY_OFF_MIN_INTERVAL, 5)
+    }
+
+    fun getOffMaxInterval(): Int {
+        return sharedPreferences.getInt(KEY_OFF_MAX_INTERVAL, 15)
+    }
+
+    fun getOffRandomEnabled(): Boolean {
+        return sharedPreferences.getBoolean(KEY_OFF_RANDOM_ENABLED, true)
     }
 
     // 设置相关

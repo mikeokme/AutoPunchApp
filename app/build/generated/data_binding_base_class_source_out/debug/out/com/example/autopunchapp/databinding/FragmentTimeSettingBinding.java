@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TimePicker;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +20,7 @@ import java.lang.String;
 
 public final class FragmentTimeSettingBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final ScrollView rootView;
 
   @NonNull
   public final Button btnCancelSetting;
@@ -29,38 +29,60 @@ public final class FragmentTimeSettingBinding implements ViewBinding {
   public final Button btnConfirmSetting;
 
   @NonNull
-  public final EditText etMaxInterval;
+  public final EditText etOffMaxInterval;
 
   @NonNull
-  public final EditText etMinInterval;
+  public final EditText etOffMinInterval;
 
   @NonNull
-  public final SwitchMaterial switchRandomPunch;
+  public final EditText etWorkMaxInterval;
 
   @NonNull
-  public final TimePicker timePickerEnd;
+  public final EditText etWorkMinInterval;
 
   @NonNull
-  public final TimePicker timePickerStart;
+  public final SwitchMaterial switchOffRandomPunch;
 
-  private FragmentTimeSettingBinding(@NonNull LinearLayout rootView,
-      @NonNull Button btnCancelSetting, @NonNull Button btnConfirmSetting,
-      @NonNull EditText etMaxInterval, @NonNull EditText etMinInterval,
-      @NonNull SwitchMaterial switchRandomPunch, @NonNull TimePicker timePickerEnd,
-      @NonNull TimePicker timePickerStart) {
+  @NonNull
+  public final SwitchMaterial switchWorkRandomPunch;
+
+  @NonNull
+  public final TimePicker timePickerOffEnd;
+
+  @NonNull
+  public final TimePicker timePickerOffStart;
+
+  @NonNull
+  public final TimePicker timePickerWorkEnd;
+
+  @NonNull
+  public final TimePicker timePickerWorkStart;
+
+  private FragmentTimeSettingBinding(@NonNull ScrollView rootView, @NonNull Button btnCancelSetting,
+      @NonNull Button btnConfirmSetting, @NonNull EditText etOffMaxInterval,
+      @NonNull EditText etOffMinInterval, @NonNull EditText etWorkMaxInterval,
+      @NonNull EditText etWorkMinInterval, @NonNull SwitchMaterial switchOffRandomPunch,
+      @NonNull SwitchMaterial switchWorkRandomPunch, @NonNull TimePicker timePickerOffEnd,
+      @NonNull TimePicker timePickerOffStart, @NonNull TimePicker timePickerWorkEnd,
+      @NonNull TimePicker timePickerWorkStart) {
     this.rootView = rootView;
     this.btnCancelSetting = btnCancelSetting;
     this.btnConfirmSetting = btnConfirmSetting;
-    this.etMaxInterval = etMaxInterval;
-    this.etMinInterval = etMinInterval;
-    this.switchRandomPunch = switchRandomPunch;
-    this.timePickerEnd = timePickerEnd;
-    this.timePickerStart = timePickerStart;
+    this.etOffMaxInterval = etOffMaxInterval;
+    this.etOffMinInterval = etOffMinInterval;
+    this.etWorkMaxInterval = etWorkMaxInterval;
+    this.etWorkMinInterval = etWorkMinInterval;
+    this.switchOffRandomPunch = switchOffRandomPunch;
+    this.switchWorkRandomPunch = switchWorkRandomPunch;
+    this.timePickerOffEnd = timePickerOffEnd;
+    this.timePickerOffStart = timePickerOffStart;
+    this.timePickerWorkEnd = timePickerWorkEnd;
+    this.timePickerWorkStart = timePickerWorkStart;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public ScrollView getRoot() {
     return rootView;
   }
 
@@ -97,39 +119,70 @@ public final class FragmentTimeSettingBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.et_max_interval;
-      EditText etMaxInterval = ViewBindings.findChildViewById(rootView, id);
-      if (etMaxInterval == null) {
+      id = R.id.et_off_max_interval;
+      EditText etOffMaxInterval = ViewBindings.findChildViewById(rootView, id);
+      if (etOffMaxInterval == null) {
         break missingId;
       }
 
-      id = R.id.et_min_interval;
-      EditText etMinInterval = ViewBindings.findChildViewById(rootView, id);
-      if (etMinInterval == null) {
+      id = R.id.et_off_min_interval;
+      EditText etOffMinInterval = ViewBindings.findChildViewById(rootView, id);
+      if (etOffMinInterval == null) {
         break missingId;
       }
 
-      id = R.id.switch_random_punch;
-      SwitchMaterial switchRandomPunch = ViewBindings.findChildViewById(rootView, id);
-      if (switchRandomPunch == null) {
+      id = R.id.et_work_max_interval;
+      EditText etWorkMaxInterval = ViewBindings.findChildViewById(rootView, id);
+      if (etWorkMaxInterval == null) {
         break missingId;
       }
 
-      id = R.id.time_picker_end;
-      TimePicker timePickerEnd = ViewBindings.findChildViewById(rootView, id);
-      if (timePickerEnd == null) {
+      id = R.id.et_work_min_interval;
+      EditText etWorkMinInterval = ViewBindings.findChildViewById(rootView, id);
+      if (etWorkMinInterval == null) {
         break missingId;
       }
 
-      id = R.id.time_picker_start;
-      TimePicker timePickerStart = ViewBindings.findChildViewById(rootView, id);
-      if (timePickerStart == null) {
+      id = R.id.switch_off_random_punch;
+      SwitchMaterial switchOffRandomPunch = ViewBindings.findChildViewById(rootView, id);
+      if (switchOffRandomPunch == null) {
         break missingId;
       }
 
-      return new FragmentTimeSettingBinding((LinearLayout) rootView, btnCancelSetting,
-          btnConfirmSetting, etMaxInterval, etMinInterval, switchRandomPunch, timePickerEnd,
-          timePickerStart);
+      id = R.id.switch_work_random_punch;
+      SwitchMaterial switchWorkRandomPunch = ViewBindings.findChildViewById(rootView, id);
+      if (switchWorkRandomPunch == null) {
+        break missingId;
+      }
+
+      id = R.id.time_picker_off_end;
+      TimePicker timePickerOffEnd = ViewBindings.findChildViewById(rootView, id);
+      if (timePickerOffEnd == null) {
+        break missingId;
+      }
+
+      id = R.id.time_picker_off_start;
+      TimePicker timePickerOffStart = ViewBindings.findChildViewById(rootView, id);
+      if (timePickerOffStart == null) {
+        break missingId;
+      }
+
+      id = R.id.time_picker_work_end;
+      TimePicker timePickerWorkEnd = ViewBindings.findChildViewById(rootView, id);
+      if (timePickerWorkEnd == null) {
+        break missingId;
+      }
+
+      id = R.id.time_picker_work_start;
+      TimePicker timePickerWorkStart = ViewBindings.findChildViewById(rootView, id);
+      if (timePickerWorkStart == null) {
+        break missingId;
+      }
+
+      return new FragmentTimeSettingBinding((ScrollView) rootView, btnCancelSetting,
+          btnConfirmSetting, etOffMaxInterval, etOffMinInterval, etWorkMaxInterval,
+          etWorkMinInterval, switchOffRandomPunch, switchWorkRandomPunch, timePickerOffEnd,
+          timePickerOffStart, timePickerWorkEnd, timePickerWorkStart);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

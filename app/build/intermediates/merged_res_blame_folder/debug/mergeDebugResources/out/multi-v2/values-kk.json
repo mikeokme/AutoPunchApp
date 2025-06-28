@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.autopunchapp-mergeDebugResources-45:/values-kk/values-kk.xml",
+            "outputFile": "com.example.autopunchapp-mergeDebugResources-53:/values-kk/values-kk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.14.2\\transforms\\87fb9c1d81d00d5d674a64641a8ded9b\\transformed\\core-1.16.0\\res\\values-kk\\values-kk.xml",

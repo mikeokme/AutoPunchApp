@@ -1,6 +1,0 @@
-com.example.autopunchapp.test.app-tracing-1.2.0-0 C:\Users\yangbin\.gradle\caches\8.14.2\transforms\7070d571166e8730716a0b6231731e20\transformed\tracing-1.2.0\res
-com.example.autopunchapp.test.app-core-1.6.1-1 C:\Users\yangbin\.gradle\caches\8.14.2\transforms\9977d75498dca7d2a1ba8d93563b44cd\transformed\core-1.6.1\res
-com.example.autopunchapp.test.app-androidTest-2 C:\Users\yangbin\yy\app\build\generated\res\resValues\androidTest\debug
-com.example.autopunchapp.test.app-mergeDebugAndroidTestResources-3 C:\Users\yangbin\yy\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.example.autopunchapp.test.app-mergeDebugAndroidTestResources-4 C:\Users\yangbin\yy\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.example.autopunchapp.test.app-debugAndroidTest-5 C:\Users\yangbin\yy\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources

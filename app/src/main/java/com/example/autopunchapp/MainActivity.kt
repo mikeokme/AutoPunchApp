@@ -1,5 +1,6 @@
 package com.example.autopunchapp
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import android.provider.Settings
@@ -215,7 +216,11 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @Suppress("DEPRECATION")
+    @SuppressLint("GestureBackNavigation")
+    @Deprecated("Deprecated in Java")
     override fun onBackPressed() {
+        super.onBackPressed()
         // 重写返回键，使用我们的返回逻辑
         goBack()
     }

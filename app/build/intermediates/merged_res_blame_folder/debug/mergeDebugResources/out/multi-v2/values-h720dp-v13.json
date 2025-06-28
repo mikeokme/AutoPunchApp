@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.autopunchapp-mergeDebugResources-45:/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "com.example.autopunchapp-mergeDebugResources-53:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.14.2\\transforms\\37fe1fcccd62cc7162f0ed170c944b53\\transformed\\appcompat-1.7.1\\res\\values-h720dp-v13\\values-h720dp-v13.xml",

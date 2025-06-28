@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.autopunchapp-mergeDebugResources-45:/values-da/values-da.xml",
+            "outputFile": "com.example.autopunchapp-mergeDebugResources-53:/values-da/values-da.xml",
             "map": [
                 {
                     "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.14.2\\transforms\\1d5c3abac4d21558709f189373d218df\\transformed\\navigation-ui-2.9.0\\res\\values-da\\values-da.xml",

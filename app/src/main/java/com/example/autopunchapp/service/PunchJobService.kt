@@ -159,9 +159,8 @@ class PunchJobService : JobService() {
                 appPackageName = task.appPackageName,
                 actions = listOf(
                     com.example.autopunchapp.model.Action(
-                        type = com.example.autopunchapp.model.ActionType.CLICK,
-                        x = 500f,
-                        y = 500f
+                        type = com.example.autopunchapp.model.ActionType.CLICK_AT,
+                        actionParams = mapOf("x" to "500", "y" to "500")
                     )
                 )
             )
