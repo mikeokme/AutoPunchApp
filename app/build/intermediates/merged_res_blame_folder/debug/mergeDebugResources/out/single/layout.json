@@ -1,0 +1,46 @@
+[
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/activity_main.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_record_action.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_record_action.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_notification.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_notification.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_punch_plan.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_punch_plan.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/item_app.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/item_app.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/item_punch_task.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/item_punch_task.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_time_setting.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_time_setting.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_home.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/item_punch_log.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/item_punch_log.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_settings.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-46:/layout/fragment_app_selection.xml",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_app_selection.xml"
+    }
+]

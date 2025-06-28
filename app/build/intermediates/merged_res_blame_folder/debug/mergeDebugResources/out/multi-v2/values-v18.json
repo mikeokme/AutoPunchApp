@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.autopunchapp-mergeDebugResources-45:/values-v18/values-v18.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.14.2\\transforms\\37fe1fcccd62cc7162f0ed170c944b53\\transformed\\appcompat-1.7.1\\res\\values-v18\\values-v18.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "48",
+                        "endOffsets": "99"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_home.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_home.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxxhdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_item_punch_task.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/item_punch_task.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/drawable_status_completed_background.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/drawable/status_completed_background.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/drawable_status_pending_background.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/drawable/status_pending_background.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-mdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_notification.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_notification.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-hdpi/ic_launcher_round.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-mdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_record_action.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_record_action.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/drawable_status_error_background.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/drawable/status_error_background.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_app_selection.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_app_selection.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_punch_plan.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_punch_plan.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/drawable/ic_launcher_foreground.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_item_punch_log.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/item_punch_log.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_activity_main.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_time_setting.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_time_setting.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-hdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/xml_accessibility_service_config.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/xml/accessibility_service_config.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/menu_menu_main.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/menu/menu_main.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/drawable_record_area_background.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/drawable/record_area_background.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xxxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_item_app.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/item_app.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/layout_fragment_settings.xml.flat",
+        "source": "com.example.autopunchapp-main-49:/layout/fragment_settings.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-debug-47:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.example.autopunchapp-main-49:/mipmap-xhdpi/ic_launcher_round.png"
+    }
+]

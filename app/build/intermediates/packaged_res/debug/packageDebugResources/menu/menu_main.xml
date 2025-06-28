@@ -1,0 +1,47 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="com.example.autopunchapp.MainActivity">
+    
+    <item
+        android:id="@+id/action_home"
+        android:orderInCategory="100"
+        android:title="首页"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_app_selection"
+        android:orderInCategory="200"
+        android:title="选择打卡软件"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_record_action"
+        android:orderInCategory="300"
+        android:title="录制打卡动作"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_time_setting"
+        android:orderInCategory="400"
+        android:title="设置时间段"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_punch_plan"
+        android:orderInCategory="500"
+        android:title="打卡计划"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_notification"
+        android:orderInCategory="600"
+        android:title="通知与提醒"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_settings"
+        android:orderInCategory="700"
+        android:title="设置"
+        app:showAsAction="never" />
+</menu>
