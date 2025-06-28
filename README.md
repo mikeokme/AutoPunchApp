@@ -349,15 +349,15 @@ IssueとPull Requestを歓迎します！
 ## 📞 联系方式 / Contact / 連絡先
 
 ### 🇨🇳 中文
-- 邮箱: your.email@example.com
+- 邮箱: yangben897251@gmail.com
 - 项目链接: [https://github.com/yourusername/auto-punch-app](https://github.com/yourusername/auto-punch-app)
 
 ### 🇺🇸 English
-- Email: your.email@example.com
+- Email: yangben897251@gmail.com
 - Project Link: [https://github.com/yourusername/auto-punch-app](https://github.com/yourusername/auto-punch-app)
 
 ### 🇯🇵 日本語
-- メール: your.email@example.com
+- メール: yangben897251@gmail.com
 - プロジェクトリンク: [https://github.com/yourusername/auto-punch-app](https://github.com/yourusername/auto-punch-app)
 
 ---
