@@ -33,9 +33,12 @@ class MainActivity : AppCompatActivity() {
     private var currentFragment: Fragment? = null
     private var fragmentStack = mutableListOf<Fragment>()
 
+    // 新增：权限请求Launcher
+    private lateinit var permissionLauncher: androidx.activity.result.ActivityResultLauncher<Array<String>>
+
     companion object {
         private const val TAG = "MainActivity"
-        private const val PERMISSION_REQUEST_CODE = 1001
+        private const val PERMISSION_REQUEST_CODE = 1001 // 可保留用于兼容性，但已不再使用
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -47,6 +50,19 @@ class MainActivity : AppCompatActivity() {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
             setSupportActionBar(binding.toolbar)
+
+            // 注册权限请求Launcher
+            permissionLauncher = registerForActivityResult(
+                androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions()
+            ) { result ->
+                val deniedPermissions = result.filterValues { !it }.keys
+                if (deniedPermissions.isNotEmpty()) {
+                    Log.w(TAG, "权限被拒绝: ${deniedPermissions.joinToString(", ")}")
+                    Toast.makeText(this, "部分权限被拒绝，可能影响应用功能", Toast.LENGTH_LONG).show()
+                } else {
+                    Log.d(TAG, "所有权限已授予")
+                }
+            }
 
             // 检查并请求必要权限
             checkAndRequestPermissions()
@@ -100,34 +116,7 @@ class MainActivity : AppCompatActivity() {
         
         // 如果有需要请求的权限，则请求
         if (permissions.isNotEmpty()) {
-            ActivityCompat.requestPermissions(this, permissions.toTypedArray(), PERMISSION_REQUEST_CODE)
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        
-        when (requestCode) {
-            PERMISSION_REQUEST_CODE -> {
-                val deniedPermissions = mutableListOf<String>()
-                
-                for (i in permissions.indices) {
-                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
-                        deniedPermissions.add(permissions[i])
-                    }
-                }
-                
-                if (deniedPermissions.isNotEmpty()) {
-                    Log.w(TAG, "权限被拒绝: ${deniedPermissions.joinToString(", ")}")
-                    Toast.makeText(this, "部分权限被拒绝，可能影响应用功能", Toast.LENGTH_LONG).show()
-                } else {
-                    Log.d(TAG, "所有权限已授予")
-                }
-            }
+            permissionLauncher.launch(permissions.toTypedArray())
         }
     }
 
