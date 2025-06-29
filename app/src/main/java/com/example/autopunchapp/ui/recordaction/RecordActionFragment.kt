@@ -40,6 +40,9 @@ class RecordActionFragment : Fragment() {
     private var recordingStartTime = 0L
     private var selectedAppPackageName = ""
     
+    // 新增：权限请求Launcher
+    private lateinit var permissionLauncher: androidx.activity.result.ActivityResultLauncher<Array<String>>
+    
     companion object {
         private const val PERMISSION_REQUEST_CODE = 1001
         private const val OVERLAY_PERMISSION_REQUEST_CODE = 1002
@@ -59,6 +62,21 @@ class RecordActionFragment : Fragment() {
         
         preferenceManager = PreferenceManager(requireContext())
         windowManager = requireContext().getSystemService(android.content.Context.WINDOW_SERVICE) as WindowManager
+        
+        // 注册权限请求Launcher
+        permissionLauncher = registerForActivityResult(
+            androidx.activity.result.contract.ActivityResultContracts.RequestMultiplePermissions()
+        ) { result ->
+            val deniedPermissions = result.filterValues { !it }.keys
+            if (deniedPermissions.isNotEmpty()) {
+                Toast.makeText(requireContext(), "需要权限才能开始录制", Toast.LENGTH_SHORT).show()
+            } else {
+                // 权限全部通过，继续检查其他权限
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    checkAndRequestPermissions(skipPermissionRequest = true)
+                }
+            }
+        }
         
         setupUI()
         setupListeners()
@@ -110,7 +128,7 @@ class RecordActionFragment : Fragment() {
     }
     
     @RequiresApi(Build.VERSION_CODES.M)
-    private fun checkAndRequestPermissions() {
+    private fun checkAndRequestPermissions(skipPermissionRequest: Boolean = false) {
         // 检查启动其他应用的权限
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             // 检查是否有启动其他应用的权限
@@ -127,6 +145,20 @@ class RecordActionFragment : Fragment() {
             return
         }
         
+        // 检查录制所需权限
+        if (!skipPermissionRequest) {
+            val permissions = mutableListOf<String>()
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(Manifest.permission.WRITE_EXTERNAL_STORAGE)
+            }
+            if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(Manifest.permission.READ_EXTERNAL_STORAGE)
+            }
+            if (permissions.isNotEmpty()) {
+                permissionLauncher.launch(permissions.toTypedArray())
+                return
+            }
+        }
         // 所有权限都已获取，开始录制
         startRecording()
     }
@@ -398,27 +430,6 @@ class RecordActionFragment : Fragment() {
         // 当从设置页面返回时，重新检查权限
         if (isRecording && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkAndRequestPermissions()
-        }
-    }
-    
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        
-        when (requestCode) {
-            PERMISSION_REQUEST_CODE -> {
-                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // 权限已获取，继续检查其他权限
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                        checkAndRequestPermissions()
-                    }
-                } else {
-                    Toast.makeText(requireContext(), "需要权限才能开始录制", Toast.LENGTH_SHORT).show()
-                }
-            }
         }
     }
 } 
