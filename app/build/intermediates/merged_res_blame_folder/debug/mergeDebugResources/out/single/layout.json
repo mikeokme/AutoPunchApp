@@ -24,6 +24,10 @@
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\activity_main.xml"
     },
     {
+        "merged": "com.example.autopunchapp-mergeDebugResources-54:/layout/fragment_record_action.xml",
+        "source": "com.example.autopunchapp-main-57:/layout/fragment_record_action.xml"
+    },
+    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\fragment_home.xml",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\fragment_home.xml"
     },
@@ -52,15 +56,15 @@
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\fragment_settings.xml"
     },
     {
-        "merged": "com.example.autopunchapp-mergeDebugResources-54:/layout/fragment_script_editor.xml",
-        "source": "com.example.autopunchapp-main-57:/layout/fragment_script_editor.xml"
-    },
-    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\item_script.xml",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\item_script.xml"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\fragment_record_action.xml",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\fragment_record_action.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-54:/layout/fragment_home.xml",
+        "source": "com.example.autopunchapp-main-57:/layout/fragment_home.xml"
     }
 ]

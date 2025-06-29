@@ -187,24 +187,18 @@
 
             <Button
                 android:id="@+id/btn_start_punch"
-                style="@style/ButtonStyle"
-                android:text="@string/btn_start_punch"
-                android:background="@drawable/bg_blur_glass"
-                android:textColor="@color/black" />
+                style="@style/Button3DStyle"
+                android:text="@string/btn_start_punch" />
 
             <Button
                 android:id="@+id/btn_set_time"
-                style="@style/ButtonStyle"
-                android:text="@string/btn_set_time"
-                android:background="@drawable/bg_blur_glass"
-                android:textColor="@color/black" />
+                style="@style/Button3DStyle"
+                android:text="@string/btn_set_time" />
 
             <Button
                 android:id="@+id/btn_record_action"
-                style="@style/ButtonStyle"
-                android:text="@string/btn_record_action"
-                android:background="@drawable/bg_blur_glass"
-                android:textColor="@color/black" />
+                style="@style/Button3DStyle"
+                android:text="@string/btn_record_action" />
 
         </LinearLayout>
 

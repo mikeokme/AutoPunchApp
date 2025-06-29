@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- 天青色主题颜色 -->
+    <color name="cyan_200">#80DEEA</color>
+    <color name="cyan_300">#4DD0E1</color>
+    <color name="cyan_400">#26C6DA</color>
+    <color name="cyan_500">#00BCD4</color>
+    <color name="cyan_600">#00ACC1</color>
+    <color name="cyan_700">#0097A7</color>
+    <color name="cyan_800">#00838F</color>
+    <color name="cyan_900">#006064</color>
+    
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
     <color name="purple_700">#FF3700B3</color>
@@ -8,11 +18,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
     
-    <!-- 应用主题颜色 -->
-    <color name="primary">#FF6200EE</color>
-    <color name="primary_dark">#FF3700B3</color>
-    <color name="primary_light">#FFBB86FC</color>
-    <color name="accent">#FF03DAC5</color>
+    <!-- 应用主题颜色 - 天青色系 -->
+    <color name="primary">#00BCD4</color>
+    <color name="primary_dark">#0097A7</color>
+    <color name="primary_light">#B2EBF2</color>
+    <color name="accent">#FF5722</color>
     <color name="background">#FFFFFFFF</color>
     <color name="surface">#FFFFFFFF</color>
     <color name="error">#FFB00020</color>
@@ -35,7 +45,7 @@
     <color name="status_completed">#4CAF50</color>
     <color name="status_pending">#FFC107</color>
     <color name="status_error">#F44336</color>
-    <color name="status_ready">#2196F3</color>
+    <color name="status_ready">#00BCD4</color>
     <color name="status_recording">#FF5722</color>
     <color name="status_paused">#FF9800</color>
     <color name="status_recorded">#4CAF50</color>
@@ -45,7 +55,7 @@
     <color name="card_background">#FFFFFF</color>
     
     <!-- 图标背景颜色 -->
-    <color name="ic_launcher_background">#FF6200EE</color>
+    <color name="ic_launcher_background">#00BCD4</color>
     
     <!-- 新增 divider 颜色 -->
     <color name="divider">#BDBDBD</color>
@@ -57,8 +67,8 @@
     <color name="light_green">#90EE90</color>
     
     <!-- 脚本管理相关颜色 -->
-    <color name="light_primary">#E8E0FF</color>
+    <color name="light_primary">#E0F7FA</color>
     <color name="warning">#FF9800</color>
     <color name="success">#4CAF50</color>
-    <color name="info">#2196F3</color>
+    <color name="info">#00BCD4</color>
 </resources>

@@ -6,6 +6,14 @@ color background_dark
 color background_light
 color black
 color card_background
+color cyan_200
+color cyan_300
+color cyan_400
+color cyan_500
+color cyan_600
+color cyan_700
+color cyan_800
+color cyan_900
 color dark_gray
 color disabled_text
 color divider
@@ -44,6 +52,10 @@ color teal_700
 color warning
 color white
 drawable bg_blur_glass
+drawable button_3d_embossed
+drawable button_3d_embossed_disabled
+drawable button_3d_embossed_pressed
+drawable button_3d_selector
 drawable button_background
 drawable category_background
 drawable floating_button_background
@@ -62,6 +74,7 @@ drawable ic_share
 drawable ic_stop_record
 drawable record_area_background
 drawable search_background
+drawable status_background
 drawable status_completed_background
 drawable status_error_background
 drawable status_pending_background
@@ -248,8 +261,11 @@ string status_ready
 string status_recorded
 string status_recording
 string task_details
+style Button3DSmallStyle
+style Button3DStyle
 style ButtonStyle
 style CardViewStyle
+style EditTextStyle
 style StatusTextStyle
 style Theme.AutoPunchApp
 style Theme.AutoPunchApp.AppBarOverlay

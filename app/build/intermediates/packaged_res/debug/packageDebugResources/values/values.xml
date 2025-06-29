@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools">
-    <color name="accent">#FF03DAC5</color>
+    <color name="accent">#FF5722</color>
     <color name="background">#FFFFFFFF</color>
     <color name="background_dark">#121212</color>
     <color name="background_light">#FAFAFA</color>
     <color name="black">#FF000000</color>
     <color name="card_background">#FFFFFF</color>
+    <color name="cyan_200">#80DEEA</color>
+    <color name="cyan_300">#4DD0E1</color>
+    <color name="cyan_400">#26C6DA</color>
+    <color name="cyan_500">#00BCD4</color>
+    <color name="cyan_600">#00ACC1</color>
+    <color name="cyan_700">#0097A7</color>
+    <color name="cyan_800">#00838F</color>
+    <color name="cyan_900">#006064</color>
     <color name="dark_gray">#424242</color>
     <color name="disabled_text">#61000000</color>
     <color name="divider">#BDBDBD</color>
     <color name="error">#FFB00020</color>
     <color name="gray">#757575</color>
-    <color name="ic_launcher_background">#FF6200EE</color>
-    <color name="info">#2196F3</color>
+    <color name="ic_launcher_background">#00BCD4</color>
+    <color name="info">#00BCD4</color>
     <color name="light_gray">#F5F5F5</color>
     <color name="light_green">#90EE90</color>
-    <color name="light_primary">#E8E0FF</color>
+    <color name="light_primary">#E0F7FA</color>
     <color name="on_background">#FF000000</color>
     <color name="on_error">#FFFFFFFF</color>
     <color name="on_primary">#FFFFFFFF</color>
     <color name="on_secondary">#FF000000</color>
     <color name="on_surface">#FF000000</color>
-    <color name="primary">#FF6200EE</color>
-    <color name="primary_dark">#FF3700B3</color>
-    <color name="primary_light">#FFBB86FC</color>
+    <color name="primary">#00BCD4</color>
+    <color name="primary_dark">#0097A7</color>
+    <color name="primary_light">#B2EBF2</color>
     <color name="primary_text">#DE000000</color>
     <color name="purple_200">#FFBB86FC</color>
     <color name="purple_500">#FF6200EE</color>
@@ -34,7 +42,7 @@
     <color name="status_not_recorded">#F44336</color>
     <color name="status_paused">#FF9800</color>
     <color name="status_pending">#FFC107</color>
-    <color name="status_ready">#2196F3</color>
+    <color name="status_ready">#00BCD4</color>
     <color name="status_recorded">#4CAF50</color>
     <color name="status_recording">#FF5722</color>
     <color name="success">#4CAF50</color>
@@ -95,26 +103,56 @@
     <string name="status_recorded">已录制</string>
     <string name="status_recording">录制中</string>
     <string name="task_details">任务详情</string>
+    <style name="Button3DSmallStyle" parent="Button3DStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
+    </style>
+    <style name="Button3DStyle" parent="Widget.MaterialComponents.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:background">@drawable/button_3d_selector</item>
+        <item name="android:elevation">4dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
     <style name="ButtonStyle" parent="Widget.MaterialComponents.Button">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">8dp</item>
         <item name="android:textSize">16sp</item>
+        <item name="backgroundTint">@color/primary</item>
+        <item name="cornerRadius">12dp</item>
     </style>
     <style name="CardViewStyle">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_margin">8dp</item>
-        <item name="cardCornerRadius">8dp</item>
-        <item name="cardElevation">4dp</item>
+        <item name="cardCornerRadius">12dp</item>
+        <item name="cardElevation">6dp</item>
         <item name="contentPadding">16dp</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+    </style>
+    <style name="EditTextStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_margin">8dp</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="hintTextColor">@color/primary</item>
     </style>
     <style name="StatusTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:textSize">16sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:padding">4dp</item>
+        <item name="android:padding">8dp</item>
+        <item name="android:background">@drawable/status_background</item>
+        <item name="android:textColor">@color/white</item>
     </style>
     <style name="Theme.AutoPunchApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         
@@ -138,9 +176,9 @@
     <style name="TitleTextStyle">
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/primary</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:layout_marginBottom">12dp</item>
     </style>
 </resources>

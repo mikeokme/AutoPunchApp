@@ -66,32 +66,23 @@
 
         <Button
             android:id="@+id/btn_start_record"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button3DSmallStyle"
             android:text="@string/btn_start_record"
-            android:layout_margin="8dp"
-            android:background="@drawable/bg_blur_glass"
-            android:textColor="@color/black" />
+            android:layout_margin="8dp" />
 
         <Button
             android:id="@+id/btn_pause_record"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button3DSmallStyle"
             android:text="@string/btn_pause_record"
             android:layout_margin="8dp"
-            android:enabled="false"
-            android:background="@drawable/bg_blur_glass"
-            android:textColor="@color/black" />
+            android:enabled="false" />
 
         <Button
             android:id="@+id/btn_stop_record"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            style="@style/Button3DSmallStyle"
             android:text="@string/btn_stop_record"
             android:layout_margin="8dp"
-            android:enabled="false"
-            android:background="@drawable/bg_blur_glass"
-            android:textColor="@color/black" />
+            android:enabled="false" />
 
     </LinearLayout>
 
@@ -114,14 +105,13 @@
 
         <Button
             android:id="@+id/btn_save_record"
+            style="@style/Button3DStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_marginStart="8dp"
             android:text="@string/btn_save_record"
-            android:enabled="false"
-            android:background="@drawable/bg_blur_glass"
-            android:textColor="@color/black" />
+            android:enabled="false" />
 
     </LinearLayout>
 </LinearLayout>

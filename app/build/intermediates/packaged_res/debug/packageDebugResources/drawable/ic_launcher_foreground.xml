@@ -4,18 +4,85 @@
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <group android:scaleX="0.6"
-        android:scaleY="0.6"
-        android:translateX="21.6"
-        android:translateY="21.6">
-        <path
-            android:fillColor="#FFFFFF"
-            android:pathData="M54,54m-30,0a30,30 0,1 1,60 0a30,30 0,1 1,-60 0" />
-        <path
-            android:fillColor="#FF6200EE"
-            android:pathData="M54,30m-20,0a20,20 0,1 1,40 0a20,20 0,1 1,-40 0" />
-        <path
-            android:fillColor="#FFFFFF"
-            android:pathData="M54,54m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
-    </group>
+    
+    <!-- 背景圆形 -->
+    <path
+        android:fillColor="#00BCD4"
+        android:pathData="M54,54m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0" />
+    
+    <!-- 外圈装饰 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillAlpha="0.2"
+        android:pathData="M54,54m-44,0a44,44 0,1 1,88 0a44,44 0,1 1,-88 0" />
+    
+    <!-- 时钟外圈 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:fillColor="#00000000"
+        android:pathData="M54,54m-32,0a32,32 0,1 1,64 0a32,32 0,1 1,-64 0" />
+    
+    <!-- 时钟中心点 -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,54m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    
+    <!-- 时针 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M54,54 L54,32" />
+    
+    <!-- 分针 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:pathData="M54,54 L66,42" />
+    
+    <!-- 秒针 -->
+    <path
+        android:strokeColor="#FF5722"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:pathData="M54,54 L70,38" />
+    
+    <!-- 时钟刻度 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M54,22 L54,26" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M86,54 L82,54" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M54,86 L54,82" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:pathData="M22,54 L26,54" />
+    
+    <!-- 自动化箭头装饰 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:pathData="M75,75 L85,75 L80,70 M85,75 L80,80" />
+    
+    <!-- 小齿轮装饰 -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:fillColor="#00000000"
+        android:pathData="M25,25m-6,0a6,6 0,1 1,12 0a6,6 0,1 1,-12 0" />
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.5"
+        android:pathData="M25,19 L25,17 M31,25 L33,25 M25,31 L25,33 M19,25 L17,25" />
 </vector> 
