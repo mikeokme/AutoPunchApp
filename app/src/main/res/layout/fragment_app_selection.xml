@@ -67,8 +67,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="选择其他应用"
-                android:background="@drawable/button_background"
-                android:textColor="@color/white" />
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
@@ -101,8 +101,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="检查无障碍服务"
-                android:background="@drawable/button_background"
-                android:textColor="@color/white" />
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

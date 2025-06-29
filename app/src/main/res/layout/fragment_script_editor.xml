@@ -125,6 +125,17 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
+            <!-- 草书宣传语 -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="射阳盐场出品，只做精品软件"
+                android:textColor="@color/gray"
+                android:textSize="16sp"
+                android:fontFamily="cursive"
+                android:gravity="center"
+                android:layout_marginTop="4dp" />
+
             <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -167,7 +178,9 @@
                 android:layout_height="36dp"
                 android:text="模板"
                 android:textSize="12sp"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btn_api_help"
@@ -175,7 +188,9 @@
                 android:layout_height="36dp"
                 android:text="API帮助"
                 android:textSize="12sp"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btn_format"
@@ -183,7 +198,9 @@
                 android:layout_height="36dp"
                 android:text="格式化"
                 android:textSize="12sp"
-                style="@style/Widget.Material3.Button.OutlinedButton" />
+                style="@style/Widget.Material3.Button.OutlinedButton"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
             <View
                 android:layout_width="0dp"

@@ -16,7 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/Theme.AutoPunchApp.PopupOverlay" />
+            app:popupTheme="@style/Theme.AutoPunchApp.PopupOverlay">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/tv_toolbar_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="自动打卡"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 
@@ -46,8 +62,8 @@
             android:layout_marginEnd="4dp"
             android:text="返回上一级"
             android:textSize="12sp"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white" />
+            android:background="@drawable/bg_blur_glass"
+            android:textColor="@color/black" />
 
         <!-- 返回主页按钮 -->
         <Button
@@ -59,8 +75,8 @@
             android:layout_marginEnd="4dp"
             android:text="返回主页"
             android:textSize="12sp"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white" />
+            android:background="@drawable/bg_blur_glass"
+            android:textColor="@color/black" />
 
         <!-- 进入桌面按钮 -->
         <Button
@@ -71,8 +87,8 @@
             android:layout_marginStart="4dp"
             android:text="进入桌面"
             android:textSize="12sp"
-            android:background="@drawable/button_background"
-            android:textColor="@color/white" />
+            android:background="@drawable/bg_blur_glass"
+            android:textColor="@color/black" />
 
     </LinearLayout>
 

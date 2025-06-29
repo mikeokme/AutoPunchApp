@@ -78,7 +78,9 @@
                         android:layout_marginEnd="4dp"
                         android:text="脚本编辑器"
                         android:textSize="12sp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:background="@drawable/bg_blur_glass"
+                        android:textColor="@color/black" />
 
                     <Button
                         android:id="@+id/btn_script_market"
@@ -88,7 +90,9 @@
                         android:layout_marginStart="4dp"
                         android:text="脚本市场"
                         android:textSize="12sp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:background="@drawable/bg_blur_glass"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -106,7 +110,9 @@
                         android:layout_marginEnd="4dp"
                         android:text="我的脚本"
                         android:textSize="12sp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:background="@drawable/bg_blur_glass"
+                        android:textColor="@color/black" />
 
                     <Button
                         android:id="@+id/btn_script_logs"
@@ -116,7 +122,9 @@
                         android:layout_marginStart="4dp"
                         android:text="执行日志"
                         android:textSize="12sp"
-                        style="@style/Widget.Material3.Button.OutlinedButton" />
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:background="@drawable/bg_blur_glass"
+                        android:textColor="@color/black" />
 
                 </LinearLayout>
 
@@ -180,17 +188,23 @@
             <Button
                 android:id="@+id/btn_start_punch"
                 style="@style/ButtonStyle"
-                android:text="@string/btn_start_punch" />
+                android:text="@string/btn_start_punch"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btn_set_time"
                 style="@style/ButtonStyle"
-                android:text="@string/btn_set_time" />
+                android:text="@string/btn_set_time"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
             <Button
                 android:id="@+id/btn_record_action"
                 style="@style/ButtonStyle"
-                android:text="@string/btn_record_action" />
+                android:text="@string/btn_record_action"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
         </LinearLayout>
 

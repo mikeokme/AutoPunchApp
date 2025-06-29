@@ -167,7 +167,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="前往设置"
-                android:layout_marginTop="8dp" />
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_blur_glass"
+                android:textColor="@color/black" />
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>

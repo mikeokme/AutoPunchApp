@@ -1,7 +1,7 @@
 [
     {
-        "merged": "com.example.autopunchapp-mergeDebugResources-54:/layout/fragment_script_list.xml",
-        "source": "com.example.autopunchapp-main-57:/layout/fragment_script_list.xml"
+        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\fragment_script_list.xml",
+        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\fragment_script_list.xml"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\fragment_script_editor.xml",
@@ -28,10 +28,6 @@
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "com.example.autopunchapp-mergeDebugResources-54:/layout/item_script.xml",
-        "source": "com.example.autopunchapp-main-57:/layout/item_script.xml"
-    },
-    {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\floating_record_button.xml",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\floating_record_button.xml"
     },
@@ -54,6 +50,14 @@
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\fragment_settings.xml",
         "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\fragment_settings.xml"
+    },
+    {
+        "merged": "com.example.autopunchapp-mergeDebugResources-54:/layout/fragment_script_editor.xml",
+        "source": "com.example.autopunchapp-main-57:/layout/fragment_script_editor.xml"
+    },
+    {
+        "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\item_script.xml",
+        "source": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-main-57:\\layout\\item_script.xml"
     },
     {
         "merged": "C:\\Users\\yangbin\\.gradle\\daemon\\8.13\\com.example.autopunchapp-mergeDebugResources-54:\\layout\\fragment_record_action.xml",

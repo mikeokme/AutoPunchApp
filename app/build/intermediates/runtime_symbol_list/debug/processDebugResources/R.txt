@@ -3060,6 +3060,7 @@ int drawable abc_textfield_search_material 0x7f070075
 int drawable abc_vector_test 0x7f070076
 int drawable avd_hide_password 0x7f070077
 int drawable avd_show_password 0x7f070078
+int drawable bg_blur_glass 0x7f0700f8
 int drawable btn_checkbox_checked_mtrl 0x7f070079
 int drawable btn_checkbox_checked_to_unchecked_mtrl_animation 0x7f07007a
 int drawable btn_checkbox_unchecked_mtrl 0x7f07007b
@@ -3779,6 +3780,7 @@ int id tv_script_version 0x7f08024c
 int id tv_task_app_name 0x7f08024d
 int id tv_task_interval 0x7f08024e
 int id tv_task_time_range 0x7f08024f
+int id tv_toolbar_title 0x7f080268
 int id tv_version 0x7f080250
 int id unchecked 0x7f080251
 int id uniform 0x7f080252

@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
@@ -40,10 +41,13 @@ public final class ActivityMainBinding implements ViewBinding {
   @NonNull
   public final Toolbar toolbar;
 
+  @NonNull
+  public final TextView tvToolbarTitle;
+
   private ActivityMainBinding(@NonNull CoordinatorLayout rootView, @NonNull Button btnBack,
       @NonNull Button btnDesktop, @NonNull Button btnHome,
       @NonNull FloatingActionButton fabSettings, @NonNull FrameLayout navHostFragmentContentMain,
-      @NonNull Toolbar toolbar) {
+      @NonNull Toolbar toolbar, @NonNull TextView tvToolbarTitle) {
     this.rootView = rootView;
     this.btnBack = btnBack;
     this.btnDesktop = btnDesktop;
@@ -51,6 +55,7 @@ public final class ActivityMainBinding implements ViewBinding {
     this.fabSettings = fabSettings;
     this.navHostFragmentContentMain = navHostFragmentContentMain;
     this.toolbar = toolbar;
+    this.tvToolbarTitle = tvToolbarTitle;
   }
 
   @Override
@@ -116,8 +121,14 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_toolbar_title;
+      TextView tvToolbarTitle = ViewBindings.findChildViewById(rootView, id);
+      if (tvToolbarTitle == null) {
+        break missingId;
+      }
+
       return new ActivityMainBinding((CoordinatorLayout) rootView, btnBack, btnDesktop, btnHome,
-          fabSettings, navHostFragmentContentMain, toolbar);
+          fabSettings, navHostFragmentContentMain, toolbar, tvToolbarTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

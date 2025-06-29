@@ -71,7 +71,7 @@ class ScriptEditorFragment : Fragment() {
     private fun setupListeners() {
         // 返回按钮
         binding.btnBack.setOnClickListener {
-            requireActivity().onBackPressed()
+            requireActivity().onBackPressedDispatcher.onBackPressed()
         }
         
         // 保存按钮
@@ -182,7 +182,7 @@ class ScriptEditorFragment : Fragment() {
             
             if (success) {
                 Toast.makeText(context, "脚本保存成功", Toast.LENGTH_SHORT).show()
-                requireActivity().onBackPressed()
+                requireActivity().onBackPressedDispatcher.onBackPressed()
             } else {
                 Toast.makeText(context, "脚本保存失败", Toast.LENGTH_SHORT).show()
             }

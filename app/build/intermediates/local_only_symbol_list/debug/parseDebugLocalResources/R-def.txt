@@ -43,6 +43,7 @@ color teal_200
 color teal_700
 color warning
 color white
+drawable bg_blur_glass
 drawable button_background
 drawable category_background
 drawable floating_button_background
@@ -175,6 +176,7 @@ id tv_script_version
 id tv_task_app_name
 id tv_task_interval
 id tv_task_time_range
+id tv_toolbar_title
 id tv_version
 layout activity_main
 layout floating_record_button
