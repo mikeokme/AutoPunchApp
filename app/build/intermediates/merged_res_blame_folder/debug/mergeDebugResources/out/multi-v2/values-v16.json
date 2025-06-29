@@ -4,7 +4,7 @@
             "outputFile": "com.example.autopunchapp-mergeDebugResources-53:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.14.2\\transforms\\37fe1fcccd62cc7162f0ed170c944b53\\transformed\\appcompat-1.7.1\\res\\values-v16\\values-v16.xml",
+                    "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.13\\transforms\\e2a2c7fd46741ada022147d37f105a0f\\transformed\\appcompat-1.6.1\\res\\values-v16\\values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -12,6 +12,24 @@
                         "endLines": "5",
                         "endColumns": "12",
                         "endOffsets": "223"
+                    },
+                    "to": {
+                        "startLines": "3",
+                        "startColumns": "4",
+                        "startOffsets": "121",
+                        "endLines": "6",
+                        "endColumns": "12",
+                        "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.13\\transforms\\34b180e15f9188cdc7e9b8576ab6ec27\\transformed\\core-1.12.0\\res\\values-v16\\values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
                     }
                 }
             ]

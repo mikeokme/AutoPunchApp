@@ -199,7 +199,7 @@ class AutoPunchAccessibilityService : AccessibilityService() {
     /**
      * 执行点击操作
      */
-    private fun performClick(x: Float, y: Float) {
+    public fun performClick(x: Float, y: Float) {
         val path = Path()
         path.moveTo(x, y)
         
@@ -323,7 +323,7 @@ class AutoPunchAccessibilityService : AccessibilityService() {
         Log.d(TAG, "记录窗口变化: $action")
     }
 
-    private fun performSwipeCustom(x1: Float, y1: Float, x2: Float, y2: Float, duration: Long) {
+    public fun performSwipeCustom(x1: Float, y1: Float, x2: Float, y2: Float, duration: Long) {
         val path = android.graphics.Path()
         path.moveTo(x1, y1)
         path.lineTo(x2, y2)
@@ -333,17 +333,47 @@ class AutoPunchAccessibilityService : AccessibilityService() {
         android.util.Log.d(TAG, "执行自定义滑动: ($x1, $y1) -> ($x2, $y2) 持续 ${duration}ms")
     }
 
-    private fun inputText(text: String) {
+    public fun inputText(text: String) {
         // 可根据实际需求实现文本输入
         android.util.Log.d(TAG, "模拟输入文本: $text")
     }
 
-    private fun launchApp(pkg: String) {
+    public fun findNodeByText(text: String): AccessibilityNodeInfo? {
+        val rootNode = rootInActiveWindow ?: return null
+        val nodes = rootNode.findAccessibilityNodeInfosByText(text)
+        return if (nodes.isNotEmpty()) nodes[0] else null
+    }
+
+    public fun launchApp(pkg: String) {
         try {
+            // 检查应用是否已安装
+            val packageInfo = applicationContext.packageManager.getPackageInfo(pkg, 0)
+            if (packageInfo == null) {
+                android.util.Log.e(TAG, "应用未安装: $pkg")
+                return
+            }
+            
+            // 获取启动意图
             val intent = applicationContext.packageManager.getLaunchIntentForPackage(pkg)
-            intent?.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+            if (intent == null) {
+                android.util.Log.e(TAG, "无法获取启动意图: $pkg")
+                return
+            }
+            
+            // 添加必要的标志
+            intent.addFlags(android.content.Intent.FLAG_ACTIVITY_NEW_TASK)
+            intent.addFlags(android.content.Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            
+            // 启动应用
             applicationContext.startActivity(intent)
-            android.util.Log.d(TAG, "启动应用: $pkg")
+            android.util.Log.d(TAG, "成功启动应用: $pkg")
+            
+        } catch (e: android.content.pm.PackageManager.NameNotFoundException) {
+            android.util.Log.e(TAG, "应用未安装: $pkg", e)
+        } catch (e: android.content.ActivityNotFoundException) {
+            android.util.Log.e(TAG, "无法启动应用: $pkg", e)
+        } catch (e: SecurityException) {
+            android.util.Log.e(TAG, "权限不足，无法启动应用: $pkg", e)
         } catch (e: Exception) {
             android.util.Log.e(TAG, "启动应用失败: $pkg", e)
         }

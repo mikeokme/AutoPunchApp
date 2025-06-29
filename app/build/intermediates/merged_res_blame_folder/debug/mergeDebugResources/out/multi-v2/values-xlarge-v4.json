@@ -4,7 +4,7 @@
             "outputFile": "com.example.autopunchapp-mergeDebugResources-53:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.14.2\\transforms\\37fe1fcccd62cc7162f0ed170c944b53\\transformed\\appcompat-1.7.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\yangbin\\.gradle\\caches\\8.13\\transforms\\e2a2c7fd46741ada022147d37f105a0f\\transformed\\appcompat-1.6.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

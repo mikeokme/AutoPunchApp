@@ -1,27 +1,26 @@
 package com.example.autopunchapp.script
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.Rect
 import android.util.Log
 import android.view.accessibility.AccessibilityNodeInfo
 import com.example.autopunchapp.service.AutoPunchAccessibilityService
-import com.example.autopunchapp.utils.AccessibilityUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
-import org.mozilla.javascript.Context as RhinoContext
 import org.mozilla.javascript.Function
 import org.mozilla.javascript.Scriptable
 import org.mozilla.javascript.ScriptableObject
-import java.io.File
+import org.mozilla.javascript.Context as RhinoContext
 
 /**
  * JavaScript 脚本引擎
- * 提供类似 Hamibot 的脚本执行能力
+ * 提供类似 Hami bot 的脚本执行能力
  */
 class ScriptEngine(private val context: Context) {
     
     companion object {
         private const val TAG = "ScriptEngine"
+        @SuppressLint("StaticFieldLeak")
         private var instance: ScriptEngine? = null
         
         fun getInstance(context: Context): ScriptEngine {
@@ -40,6 +39,7 @@ class ScriptEngine(private val context: Context) {
         initRhinoEngine()
     }
     
+    @Suppress("DEPRECATION")
     private fun initRhinoEngine() {
         try {
             rhinoContext = RhinoContext.enter()
@@ -59,7 +59,7 @@ class ScriptEngine(private val context: Context) {
     private fun setupGlobalAPIs() {
         scope?.let { scriptableScope ->
             // 点击相关 API
-            ScriptableObject.putProperty(scriptableScope, "click", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "click", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.isNotEmpty()) {
                         val target = args[0].toString()
@@ -76,12 +76,70 @@ class ScriptEngine(private val context: Context) {
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 文本输入 API
-            ScriptableObject.putProperty(scriptableScope, "input", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "input", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.isNotEmpty()) {
                         val text = args[0].toString()
@@ -89,12 +147,70 @@ class ScriptEngine(private val context: Context) {
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 滑动 API
-            ScriptableObject.putProperty(scriptableScope, "swipe", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "swipe", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.size >= 4) {
                         val x1 = args[0].toString().toFloat()
@@ -106,12 +222,70 @@ class ScriptEngine(private val context: Context) {
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 等待 API
-            ScriptableObject.putProperty(scriptableScope, "sleep", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "sleep", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.isNotEmpty()) {
                         val ms = args[0].toString().toLong()
@@ -119,12 +293,70 @@ class ScriptEngine(private val context: Context) {
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 查找元素 API
-            ScriptableObject.putProperty(scriptableScope, "findText", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "findText", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.isNotEmpty()) {
                         val text = args[0].toString()
@@ -132,19 +364,79 @@ class ScriptEngine(private val context: Context) {
                         if (node != null) {
                             val result = cx?.newObject(scriptableScope)
                             ScriptableObject.putProperty(result, "text", node.text?.toString() ?: "")
-                            ScriptableObject.putProperty(result, "bounds", "${node.boundsInScreen.left},${node.boundsInScreen.top},${node.boundsInScreen.right},${node.boundsInScreen.bottom}")
+                            val rect = android.graphics.Rect()
+                            node.getBoundsInScreen(rect)
+                            ScriptableObject.putProperty(result, "bounds", "${rect.left},${rect.top},${rect.right},${rect.bottom}")
                             ScriptableObject.putProperty(result, "clickable", node.isClickable)
                             return result
                         }
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 启动应用 API
-            ScriptableObject.putProperty(scriptableScope, "launchApp", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "launchApp", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.isNotEmpty()) {
                         val packageName = args[0].toString()
@@ -152,24 +444,140 @@ class ScriptEngine(private val context: Context) {
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 日志 API
-            ScriptableObject.putProperty(scriptableScope, "log", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "log", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     if (args != null && args.isNotEmpty()) {
                         Log.d(TAG, "Script: ${args[0]}")
                     }
                     return null
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
             
             // 获取屏幕信息 API
-            ScriptableObject.putProperty(scriptableScope, "getScreenSize", object : Function() {
+            ScriptableObject.putProperty(scriptableScope, "getScreenSize", object : Function {
                 override fun call(cx: RhinoContext?, scope: Scriptable?, thisObj: Scriptable?, args: Array<out Any>?): Any? {
                     val screenSize = getScreenSize()
                     val result = cx?.newObject(scriptableScope)
@@ -177,8 +585,66 @@ class ScriptEngine(private val context: Context) {
                     ScriptableObject.putProperty(result, "height", screenSize.second)
                     return result
                 }
-                
+
+                override fun construct(
+                    cx: org.mozilla.javascript.Context?,
+                    scope: Scriptable?,
+                    args: Array<out Any>?
+                ): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
                 override fun getClassName(): String = "Function"
+                override fun get(name: String?, start: Scriptable?): Any? = null
+                override fun get(index: Int, start: Scriptable?): Any? = null
+                override fun has(name: String?, start: Scriptable?): Boolean = false
+                override fun has(index: Int, start: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(name: String?, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun put(index: Int, start: Scriptable?, value: Any?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(name: String?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun delete(index: Int) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getPrototype(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setPrototype(prototype: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getParentScope(): Scriptable {
+                    TODO("Not yet implemented")
+                }
+
+                override fun setParentScope(parent: Scriptable?) {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getIds(): Array<Any> {
+                    TODO("Not yet implemented")
+                }
+
+                override fun getDefaultValue(hint: Class<*>?): Any {
+                    TODO("Not yet implemented")
+                }
+
+                override fun hasInstance(instance: Scriptable?): Boolean {
+                    TODO("Not yet implemented")
+                }
             })
         }
     }
@@ -187,7 +653,7 @@ class ScriptEngine(private val context: Context) {
      * 执行脚本
      */
     suspend fun executeScript(scriptContent: String): ScriptResult = withContext(Dispatchers.IO) {
-        val result = ScriptResult()
+        var result = ScriptResult()
         
         try {
             isRunning = true
@@ -195,13 +661,11 @@ class ScriptEngine(private val context: Context) {
             
             rhinoContext?.evaluateString(scope, scriptContent, "Script", 1, null)
             
-            result.success = true
-            result.message = "脚本执行成功"
+            result = result.copy(success = true, message = "脚本执行成功")
             Log.d(TAG, "脚本执行完成")
             
         } catch (e: Exception) {
-            result.success = false
-            result.message = "脚本执行失败: ${e.message}"
+            result = result.copy(success = false, message = "脚本执行失败: ${e.message}")
             Log.e(TAG, "脚本执行失败", e)
         } finally {
             isRunning = false
@@ -209,24 +673,7 @@ class ScriptEngine(private val context: Context) {
         
         result
     }
-    
-    /**
-     * 执行脚本文件
-     */
-    suspend fun executeScriptFile(filePath: String): ScriptResult {
-        return try {
-            val file = File(filePath)
-            if (file.exists()) {
-                val scriptContent = file.readText()
-                executeScript(scriptContent)
-            } else {
-                ScriptResult(false, "脚本文件不存在: $filePath")
-            }
-        } catch (e: Exception) {
-            ScriptResult(false, "读取脚本文件失败: ${e.message}")
-        }
-    }
-    
+
     /**
      * 停止脚本执行
      */

@@ -225,7 +225,12 @@ class ScriptEditorFragment : Fragment() {
             "文本输入模板", 
             "滑动操作模板",
             "应用启动模板",
-            "循环操作模板"
+            "循环操作模板",
+            "条件判断模板",
+            "文件操作模板",
+            "网络请求模板",
+            "OCR识别模板",
+            "定时任务模板"
         )
         
         androidx.appcompat.app.AlertDialog.Builder(requireContext())
@@ -237,6 +242,11 @@ class ScriptEditorFragment : Fragment() {
                     2 -> getSwipeTemplate()
                     3 -> getLaunchAppTemplate()
                     4 -> getLoopTemplate()
+                    5 -> getConditionTemplate()
+                    6 -> getFileOperationTemplate()
+                    7 -> getNetworkTemplate()
+                    8 -> getOcrTemplate()
+                    9 -> getScheduledTaskTemplate()
                     else -> getDefaultScriptTemplate()
                 }
                 binding.etScriptCode.setText(template)
@@ -248,30 +258,95 @@ class ScriptEditorFragment : Fragment() {
         val helpText = """
             API 帮助文档：
             
+            ===== 基础操作 =====
             点击操作：
             - click("按钮文本") - 点击包含指定文本的按钮
             - click("100,200") - 点击指定坐标
+            - longClick("文本", 2000) - 长按文本2秒
+            - doubleClick("文本") - 双击文本
             
             文本输入：
             - input("要输入的文本") - 在当前焦点输入文本
+            - clearText() - 清空当前输入框
+            - setText("新文本") - 设置文本内容
             
             滑动操作：
             - swipe(100, 200, 300, 400, 500) - 从(100,200)滑动到(300,400)，持续500ms
+            - swipeUp() - 向上滑动
+            - swipeDown() - 向下滑动
+            - swipeLeft() - 向左滑动
+            - swipeRight() - 向右滑动
             
-            等待操作：
+            ===== 等待操作 =====
             - sleep(1000) - 等待1000毫秒
+            - waitForText("文本", 5000) - 等待文本出现，最多5秒
+            - waitForElement("元素ID", 3000) - 等待元素出现
             
-            查找元素：
+            ===== 查找元素 =====
             - findText("文本") - 查找包含指定文本的元素
+            - findElement("元素ID") - 查找指定ID的元素
+            - findElementByClass("类名") - 根据类名查找元素
+            - findElementByDesc("描述") - 根据描述查找元素
+            - exists("文本") - 检查文本是否存在
             
-            启动应用：
+            ===== 应用操作 =====
             - launchApp("com.example.app") - 启动指定应用
+            - closeApp("com.example.app") - 关闭指定应用
+            - getCurrentApp() - 获取当前应用包名
+            - goHome() - 返回桌面
+            - goBack() - 返回上一页
             
-            日志输出：
-            - log("日志信息") - 输出日志
-            
-            获取屏幕信息：
+            ===== 屏幕操作 =====
             - getScreenSize() - 获取屏幕尺寸
+            - takeScreenshot() - 截取屏幕
+            - getScreenBrightness() - 获取屏幕亮度
+            - setScreenBrightness(100) - 设置屏幕亮度
+            
+            ===== 系统操作 =====
+            - getBatteryLevel() - 获取电池电量
+            - isCharging() - 检查是否在充电
+            - getNetworkType() - 获取网络类型
+            - isWifiConnected() - 检查WiFi连接状态
+            
+            ===== 文件操作 =====
+            - readFile("文件路径") - 读取文件内容
+            - writeFile("文件路径", "内容") - 写入文件
+            - appendFile("文件路径", "内容") - 追加文件内容
+            - deleteFile("文件路径") - 删除文件
+            - fileExists("文件路径") - 检查文件是否存在
+            
+            ===== 网络操作 =====
+            - httpGet("URL") - 发送GET请求
+            - httpPost("URL", "数据") - 发送POST请求
+            - downloadFile("URL", "本地路径") - 下载文件
+            
+            ===== OCR识别 =====
+            - recognizeText() - 识别当前屏幕文本
+            - recognizeTextInRegion(x, y, width, height) - 识别指定区域文本
+            
+            ===== 日志输出 =====
+            - log("日志信息") - 输出日志
+            - logInfo("信息") - 输出信息日志
+            - logError("错误") - 输出错误日志
+            - logWarning("警告") - 输出警告日志
+            
+            ===== 定时任务 =====
+            - scheduleTask(延迟毫秒, 回调函数) - 设置定时任务
+            - cancelTask(任务ID) - 取消定时任务
+            
+            ===== 变量操作 =====
+            - setVariable("变量名", "值") - 设置变量
+            - getVariable("变量名") - 获取变量值
+            - clearVariable("变量名") - 清除变量
+            
+            ===== 条件控制 =====
+            - if (条件) { 代码块 } - 条件判断
+            - while (条件) { 代码块 } - 循环执行
+            - for (let i = 0; i < 10; i++) { 代码块 } - 计数循环
+            
+            ===== 异常处理 =====
+            - try { 代码块 } catch (e) { 异常处理 } - 异常捕获
+            - throw "错误信息" - 抛出异常
         """.trimIndent()
         
         androidx.appcompat.app.AlertDialog.Builder(requireContext())
@@ -283,15 +358,58 @@ class ScriptEditorFragment : Fragment() {
     
     private fun formatCode() {
         val content = binding.etScriptCode.text.toString()
-        // 这里可以实现简单的代码格式化
-        // 目前只是简单的缩进处理
-        val formatted = content.lines()
-            .map { it.trim() }
-            .filter { it.isNotEmpty() }
-            .joinToString("\n") { "    $it" }
         
-        binding.etScriptCode.setText(formatted)
-        Toast.makeText(context, "代码已格式化", Toast.LENGTH_SHORT).show()
+        try {
+            // 简单的代码格式化
+            val lines = content.lines()
+            val formattedLines = mutableListOf<String>()
+            var indentLevel = 0
+            
+            for (line in lines) {
+                val trimmedLine = line.trim()
+                if (trimmedLine.isEmpty()) {
+                    formattedLines.add("")
+                    continue
+                }
+                
+                // 减少缩进的情况
+                if (trimmedLine.startsWith("}") || 
+                    trimmedLine.startsWith("} else") ||
+                    trimmedLine.startsWith("} catch") ||
+                    trimmedLine.startsWith("} finally")) {
+                    indentLevel = maxOf(0, indentLevel - 1)
+                }
+                
+                // 添加缩进
+                val indent = "    ".repeat(indentLevel)
+                formattedLines.add(indent + trimmedLine)
+                
+                // 增加缩进的情况
+                if (trimmedLine.endsWith("{") ||
+                    trimmedLine.startsWith("if ") ||
+                    trimmedLine.startsWith("else ") ||
+                    trimmedLine.startsWith("try ") ||
+                    trimmedLine.startsWith("catch ") ||
+                    trimmedLine.startsWith("finally ") ||
+                    trimmedLine.startsWith("for ") ||
+                    trimmedLine.startsWith("while ") ||
+                    trimmedLine.startsWith("function ")) {
+                    indentLevel++
+                }
+            }
+            
+            val formatted = formattedLines.joinToString("\n")
+            binding.etScriptCode.setText(formatted)
+            
+            // 更新光标位置到末尾
+            binding.etScriptCode.setSelection(formatted.length)
+            
+            Toast.makeText(context, "代码已格式化", Toast.LENGTH_SHORT).show()
+            
+        } catch (e: Exception) {
+            Log.e(TAG, "代码格式化失败", e)
+            Toast.makeText(context, "代码格式化失败", Toast.LENGTH_SHORT).show()
+        }
     }
     
     private fun updateLineInfo() {
@@ -308,19 +426,48 @@ class ScriptEditorFragment : Fragment() {
             // 自动打卡脚本模板
             // 作者：用户
             // 版本：1.0.0
+            // 描述：自动执行打卡操作
             
             log("开始执行自动打卡脚本");
             
-            // 启动目标应用
-            launchApp("com.example.app");
-            sleep(2000);
-            
-            // 查找并点击打卡按钮
-            if (findText("打卡")) {
-                click("打卡");
-                log("打卡成功");
-            } else {
-                log("未找到打卡按钮");
+            try {
+                // 启动目标应用
+                launchApp("com.example.app");
+                sleep(3000);
+                
+                // 等待应用加载完成
+                if (waitForText("首页", 5000)) {
+                    log("应用启动成功");
+                } else {
+                    log("应用启动失败，尝试重新启动");
+                    launchApp("com.example.app");
+                    sleep(2000);
+                }
+                
+                // 查找并点击打卡按钮
+                if (findText("打卡")) {
+                    click("打卡");
+                    log("点击打卡按钮");
+                    sleep(2000);
+                    
+                    // 检查打卡结果
+                    if (findText("打卡成功") || findText("已打卡")) {
+                        log("打卡成功！");
+                    } else if (findText("打卡失败")) {
+                        log("打卡失败，请检查网络或重试");
+                    } else {
+                        log("打卡状态未知");
+                    }
+                } else {
+                    log("未找到打卡按钮，尝试其他方式");
+                    
+                    // 尝试通过坐标点击
+                    click("200,300");
+                    sleep(1000);
+                }
+                
+            } catch (e) {
+                logError("脚本执行异常: " + e.message);
             }
             
             log("脚本执行完成");
@@ -332,13 +479,39 @@ class ScriptEditorFragment : Fragment() {
             // 点击操作模板
             log("开始执行点击操作");
             
-            // 点击文本按钮
-            click("确定");
-            sleep(1000);
-            
-            // 点击坐标位置
-            click("100,200");
-            sleep(1000);
+            try {
+                // 点击文本按钮
+                if (findText("确定")) {
+                    click("确定");
+                    log("点击确定按钮");
+                    sleep(1000);
+                }
+                
+                // 点击坐标位置
+                click("100,200");
+                log("点击坐标(100,200)");
+                sleep(1000);
+                
+                // 长按操作
+                longClick("长按文本", 2000);
+                log("长按操作完成");
+                sleep(1000);
+                
+                // 双击操作
+                doubleClick("双击文本");
+                log("双击操作完成");
+                sleep(1000);
+                
+                // 检查点击结果
+                if (findText("成功")) {
+                    log("点击操作成功");
+                } else {
+                    log("点击操作可能失败");
+                }
+                
+            } catch (e) {
+                logError("点击操作异常: " + e.message);
+            }
             
             log("点击操作完成");
         """.trimIndent()
@@ -349,12 +522,37 @@ class ScriptEditorFragment : Fragment() {
             // 文本输入模板
             log("开始执行文本输入");
             
-            // 输入文本
-            input("要输入的文本内容");
-            sleep(1000);
-            
-            // 点击确定按钮
-            click("确定");
+            try {
+                // 清空输入框
+                clearText();
+                sleep(500);
+                
+                // 输入文本
+                input("要输入的文本内容");
+                log("输入文本完成");
+                sleep(1000);
+                
+                // 检查输入结果
+                if (findText("要输入的文本内容")) {
+                    log("文本输入成功");
+                } else {
+                    log("文本输入可能失败");
+                }
+                
+                // 点击确定按钮
+                if (findText("确定")) {
+                    click("确定");
+                    log("点击确定按钮");
+                    sleep(1000);
+                }
+                
+                // 设置文本内容
+                setText("新的文本内容");
+                log("设置文本完成");
+                
+            } catch (e) {
+                logError("文本输入异常: " + e.message);
+            }
             
             log("文本输入完成");
         """.trimIndent()
@@ -365,13 +563,46 @@ class ScriptEditorFragment : Fragment() {
             // 滑动操作模板
             log("开始执行滑动操作");
             
-            // 向上滑动
-            swipe(200, 500, 200, 100, 1000);
-            sleep(1000);
-            
-            // 向下滑动
-            swipe(200, 100, 200, 500, 1000);
-            sleep(1000);
+            try {
+                // 获取屏幕尺寸
+                val screenSize = getScreenSize();
+                log("屏幕尺寸: " + screenSize);
+                
+                // 向上滑动
+                swipeUp();
+                log("向上滑动完成");
+                sleep(1000);
+                
+                // 向下滑动
+                swipeDown();
+                log("向下滑动完成");
+                sleep(1000);
+                
+                // 向左滑动
+                swipeLeft();
+                log("向左滑动完成");
+                sleep(1000);
+                
+                // 向右滑动
+                swipeRight();
+                log("向右滑动完成");
+                sleep(1000);
+                
+                // 自定义滑动
+                swipe(200, 500, 200, 100, 1000);
+                log("自定义滑动完成");
+                sleep(1000);
+                
+                // 检查滑动结果
+                if (findText("新内容")) {
+                    log("滑动操作成功，发现新内容");
+                } else {
+                    log("滑动操作完成");
+                }
+                
+            } catch (e) {
+                logError("滑动操作异常: " + e.message);
+            }
             
             log("滑动操作完成");
         """.trimIndent()
@@ -382,16 +613,52 @@ class ScriptEditorFragment : Fragment() {
             // 应用启动模板
             log("开始启动应用");
             
-            // 启动应用
-            launchApp("com.example.targetapp");
-            sleep(3000);
-            
-            // 等待应用加载完成
-            if (findText("首页")) {
-                log("应用启动成功");
-            } else {
-                log("应用启动失败");
+            try {
+                // 获取当前应用
+                val currentApp = getCurrentApp();
+                log("当前应用: " + currentApp);
+                
+                // 启动目标应用
+                launchApp("com.example.targetapp");
+                log("启动目标应用");
+                sleep(3000);
+                
+                // 等待应用加载完成
+                if (waitForText("首页", 5000)) {
+                    log("应用启动成功");
+                    
+                    // 执行应用内操作
+                    if (findText("登录")) {
+                        click("登录");
+                        log("点击登录按钮");
+                        sleep(2000);
+                    }
+                    
+                } else {
+                    log("应用启动失败，尝试重新启动");
+                    launchApp("com.example.targetapp");
+                    sleep(2000);
+                    
+                    if (waitForText("首页", 3000)) {
+                        log("重新启动成功");
+                    } else {
+                        log("应用启动失败");
+                        return;
+                    }
+                }
+                
+                // 检查应用状态
+                if (findText("已登录")) {
+                    log("应用已登录，可以执行后续操作");
+                } else {
+                    log("需要登录操作");
+                }
+                
+            } catch (e) {
+                logError("应用启动异常: " + e.message);
             }
+            
+            log("应用启动操作完成");
         """.trimIndent()
     }
     
@@ -400,22 +667,132 @@ class ScriptEditorFragment : Fragment() {
             // 循环操作模板
             log("开始执行循环操作");
             
-            // 循环执行5次
-            for (let i = 0; i < 5; i++) {
-                log("执行第" + (i + 1) + "次操作");
+            try {
+                // 设置最大重试次数
+                const maxRetries = 5;
+                let retryCount = 0;
                 
-                // 执行具体操作
-                click("按钮");
-                sleep(1000);
-                
-                // 检查是否成功
-                if (findText("成功")) {
-                    log("操作成功");
-                    break;
+                // 循环执行操作
+                while (retryCount < maxRetries) {
+                    log("执行第" + (retryCount + 1) + "次操作");
+                    
+                    // 执行具体操作
+                    if (findText("按钮")) {
+                        click("按钮");
+                        log("点击按钮");
+                        sleep(1000);
+                        
+                        // 检查是否成功
+                        if (findText("成功")) {
+                            log("操作成功，跳出循环");
+                            break;
+                        } else if (findText("失败")) {
+                            log("操作失败，继续重试");
+                        } else {
+                            log("操作状态未知");
+                        }
+                    } else {
+                        log("未找到目标按钮");
+                    }
+                    
+                    retryCount++;
+                    sleep(2000); // 等待2秒后重试
                 }
+                
+                // 检查最终结果
+                if (retryCount >= maxRetries) {
+                    log("达到最大重试次数，操作失败");
+                } else {
+                    log("循环操作成功完成");
+                }
+                
+                // 计数循环示例
+                for (let i = 0; i < 3; i++) {
+                    log("执行第" + (i + 1) + "次计数操作");
+                    swipeUp();
+                    sleep(1000);
+                }
+                
+            } catch (e) {
+                logError("循环操作异常: " + e.message);
             }
             
             log("循环操作完成");
+        """.trimIndent()
+    }
+    
+    private fun getConditionTemplate(): String {
+        return """
+            // 条件判断模板
+            log("开始执行条件判断");
+            
+            // 检查条件
+            if (findText("条件文本")) {
+                log("条件满足");
+            } else {
+                log("条件不满足");
+            }
+            
+            log("条件判断完成");
+        """.trimIndent()
+    }
+    
+    private fun getFileOperationTemplate(): String {
+        return """
+            // 文件操作模板
+            log("开始执行文件操作");
+            
+            // 读取文件内容
+            val content = readFile("path/to/file.txt");
+            log("文件内容：" + content);
+            
+            // 写入文件
+            writeFile("path/to/file.txt", "新内容");
+            
+            log("文件操作完成");
+        """.trimIndent()
+    }
+    
+    private fun getNetworkTemplate(): String {
+        return """
+            // 网络请求模板
+            log("开始执行网络请求");
+            
+            // 发送网络请求
+            val response = sendNetworkRequest("https://api.example.com/data");
+            log("响应内容：" + response);
+            
+            log("网络请求完成");
+        """.trimIndent()
+    }
+    
+    private fun getOcrTemplate(): String {
+        return """
+            // OCR识别模板
+            log("开始执行OCR识别");
+            
+            // 获取屏幕截图
+            val screenshot = getScreenShot();
+            
+            // 识别文本
+            val text = recognizeText(screenshot);
+            log("识别结果：" + text);
+            
+            log("OCR识别完成");
+        """.trimIndent()
+    }
+    
+    private fun getScheduledTaskTemplate(): String {
+        return """
+            // 定时任务模板
+            log("开始执行定时任务");
+            
+            // 设置定时任务
+            scheduleTask(10000) {
+                log("定时任务执行");
+            }
+            
+            log("定时任务设置完成");
         """.trimIndent()
     }
     

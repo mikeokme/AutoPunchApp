@@ -110,8 +110,7 @@ class HomeFragment : Fragment() {
                         return@setOnClickListener
                     }
 
-                    val selectedAppPosition = binding.spinnerAppSelection.selectedItemPosition
-                    if (selectedAppPosition == 0) {
+                    if (selectedApp == null) {
                         Toast.makeText(requireContext(), "请先选择打卡软件", Toast.LENGTH_SHORT).show()
                         return@setOnClickListener
                     }
@@ -238,7 +237,7 @@ class HomeFragment : Fragment() {
             // 加载保存的打卡状态
             val isPunchCompleted = preferenceManager.getPunchStatus()
             val lastPunchTime = preferenceManager.getLastPunchTime()
-            val selectedApp = preferenceManager.getSelectedApp(requireContext())
+            val selectedAppPackageName = preferenceManager.getSelectedApp(requireContext())
             val isActionRecorded = preferenceManager.getActionRecordStatus()
 
             // 更新UI
@@ -254,13 +253,34 @@ class HomeFragment : Fragment() {
                 binding.tvPunchTime.text = "上次打卡时间: $lastPunchTime"
             }
 
-            if (selectedApp.isNotEmpty()) {
-                val savedIndex = when (selectedApp) {
-                    "com.alibaba.android.rimet" -> 0
-                    "com.tencent.wework" -> 1
-                    "com.ss.android.lark" -> 2
-                    "com.mobileoffice.m3" -> 3
-                    else -> 4
+            // 恢复选择的应用
+            if (selectedAppPackageName.isNotEmpty()) {
+                val savedIndex = when (selectedAppPackageName) {
+                    "com.alibaba.android.rimet" -> {
+                        selectedApp = AppInfo("com.alibaba.android.rimet", "钉钉", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                        0
+                    }
+                    "com.tencent.wework" -> {
+                        selectedApp = AppInfo("com.tencent.wework", "企业微信", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                        1
+                    }
+                    "com.ss.android.lark" -> {
+                        selectedApp = AppInfo("com.ss.android.lark", "飞书", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                        2
+                    }
+                    "com.mobileoffice.m3" -> {
+                        selectedApp = AppInfo("com.mobileoffice.m3", "移动办公M3", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                        3
+                    }
+                    else -> {
+                        // 对于其他应用，需要从已安装应用列表中查找
+                        val installedApps = AppListUtil.getInstalledApps(requireContext())
+                        val foundApp = installedApps.find { it.packageName == selectedAppPackageName }
+                        if (foundApp != null) {
+                            selectedApp = foundApp
+                        }
+                        4
+                    }
                 }
                 binding.spinnerAppSelection.setSelection(savedIndex)
             }
@@ -363,17 +383,31 @@ class HomeFragment : Fragment() {
             // 设置选择监听器
             binding.spinnerAppSelection.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
                 override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
-                    selectedApp = when (position) {
-                        0 -> AppInfo("com.alibaba.android.rimet", "钉钉", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
-                        1 -> AppInfo("com.tencent.wework", "企业微信", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
-                        2 -> AppInfo("com.ss.android.lark", "飞书", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
-                        3 -> AppInfo("com.mobileoffice.m3", "移动办公M3", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
-                        4 -> { checkPermissionAndShowAppSelection(); null }
-                        else -> null
-                    }
-                    selectedApp?.let { app ->
-                        preferenceManager.saveSelectedApp(requireContext(), app.packageName)
-                        Log.d(TAG, "Selected app: ${app.appName} (${app.packageName})")
+                    when (position) {
+                        0 -> {
+                            selectedApp = AppInfo("com.alibaba.android.rimet", "钉钉", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                            preferenceManager.saveSelectedApp(requireContext(), selectedApp!!.packageName)
+                            Log.d(TAG, "Selected app: ${selectedApp!!.appName} (${selectedApp!!.packageName})")
+                        }
+                        1 -> {
+                            selectedApp = AppInfo("com.tencent.wework", "企业微信", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                            preferenceManager.saveSelectedApp(requireContext(), selectedApp!!.packageName)
+                            Log.d(TAG, "Selected app: ${selectedApp!!.appName} (${selectedApp!!.packageName})")
+                        }
+                        2 -> {
+                            selectedApp = AppInfo("com.ss.android.lark", "飞书", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                            preferenceManager.saveSelectedApp(requireContext(), selectedApp!!.packageName)
+                            Log.d(TAG, "Selected app: ${selectedApp!!.appName} (${selectedApp!!.packageName})")
+                        }
+                        3 -> {
+                            selectedApp = AppInfo("com.mobileoffice.m3", "移动办公M3", requireContext().getDrawable(android.R.drawable.ic_menu_help)!!)
+                            preferenceManager.saveSelectedApp(requireContext(), selectedApp!!.packageName)
+                            Log.d(TAG, "Selected app: ${selectedApp!!.appName} (${selectedApp!!.packageName})")
+                        }
+                        4 -> {
+                            // 对于"其他软件..."，不立即设置selectedApp，而是显示选择对话框
+                            checkPermissionAndShowAppSelection()
+                        }
                     }
                 }
                 override fun onNothingSelected(parent: AdapterView<*>) {}

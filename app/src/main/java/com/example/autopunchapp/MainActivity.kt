@@ -1,7 +1,10 @@
 package com.example.autopunchapp
 
+import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.provider.Settings
 import android.util.Log
@@ -9,6 +12,8 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.example.autopunchapp.databinding.ActivityMainBinding
 import com.example.autopunchapp.ui.appselection.AppSelectionFragment
@@ -16,6 +21,8 @@ import com.example.autopunchapp.ui.home.HomeFragment
 import com.example.autopunchapp.ui.notification.NotificationFragment
 import com.example.autopunchapp.ui.punchplan.PunchPlanFragment
 import com.example.autopunchapp.ui.recordaction.RecordActionFragment
+import com.example.autopunchapp.ui.script.ScriptEditorFragment
+import com.example.autopunchapp.ui.script.ScriptListFragment
 import com.example.autopunchapp.ui.settings.SettingsFragment
 import com.example.autopunchapp.ui.timesetting.TimeSettingFragment
 import com.example.autopunchapp.utils.AccessibilityUtil
@@ -28,6 +35,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object {
         private const val TAG = "MainActivity"
+        private const val PERMISSION_REQUEST_CODE = 1001
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -39,6 +47,9 @@ class MainActivity : AppCompatActivity() {
             binding = ActivityMainBinding.inflate(layoutInflater)
             setContentView(binding.root)
             setSupportActionBar(binding.toolbar)
+
+            // 检查并请求必要权限
+            checkAndRequestPermissions()
 
             // 检查无障碍服务是否开启
             if (!AccessibilityUtil.isAccessibilityServiceEnabled(this)) {
@@ -62,6 +73,61 @@ class MainActivity : AppCompatActivity() {
         } catch (e: Exception) {
             Log.e(TAG, "onCreate: Error initializing MainActivity", e)
             Toast.makeText(this, "应用初始化失败: ${e.message}", Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun checkAndRequestPermissions() {
+        val permissions = mutableListOf<String>()
+        
+        // 检查通知权限（Android 13+）
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) 
+                != PackageManager.PERMISSION_GRANTED) {
+                permissions.add(Manifest.permission.POST_NOTIFICATIONS)
+            }
+        }
+        
+        // 检查网络权限
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.INTERNET) 
+            != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.INTERNET)
+        }
+        
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_NETWORK_STATE) 
+            != PackageManager.PERMISSION_GRANTED) {
+            permissions.add(Manifest.permission.ACCESS_NETWORK_STATE)
+        }
+        
+        // 如果有需要请求的权限，则请求
+        if (permissions.isNotEmpty()) {
+            ActivityCompat.requestPermissions(this, permissions.toTypedArray(), PERMISSION_REQUEST_CODE)
+        }
+    }
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        
+        when (requestCode) {
+            PERMISSION_REQUEST_CODE -> {
+                val deniedPermissions = mutableListOf<String>()
+                
+                for (i in permissions.indices) {
+                    if (grantResults[i] != PackageManager.PERMISSION_GRANTED) {
+                        deniedPermissions.add(permissions[i])
+                    }
+                }
+                
+                if (deniedPermissions.isNotEmpty()) {
+                    Log.w(TAG, "权限被拒绝: ${deniedPermissions.joinToString(", ")}")
+                    Toast.makeText(this, "部分权限被拒绝，可能影响应用功能", Toast.LENGTH_LONG).show()
+                } else {
+                    Log.d(TAG, "所有权限已授予")
+                }
+            }
         }
     }
 
@@ -162,6 +228,14 @@ class MainActivity : AppCompatActivity() {
                 }
                 R.id.action_notification -> {
                     loadFragment(NotificationFragment())
+                    true
+                }
+                R.id.action_script_list -> {
+                    loadFragment(ScriptListFragment.newInstance())
+                    true
+                }
+                R.id.action_script_editor -> {
+                    loadFragment(ScriptEditorFragment.newInstance())
                     true
                 }
                 R.id.action_settings -> {

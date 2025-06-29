@@ -6,7 +6,7 @@
 
     <uses-sdk
         android:minSdkVersion="21"
-        android:targetSdkVersion="36" />
+        android:targetSdkVersion="34" />
 
     <!-- 添加必要的权限 -->
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
@@ -25,7 +25,13 @@
 
     <!-- 通知权限 -->
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
+    <!-- 启动其他应用所需权限 -->
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <!-- 网络权限（如果需要下载脚本） -->
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <permission
@@ -43,6 +49,7 @@
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_clock"
         android:supportsRtl="true"
+        android:testOnly="true"
         android:theme="@style/Theme.AutoPunchApp" >
         <activity
             android:name="com.example.autopunchapp.MainActivity"

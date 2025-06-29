@@ -21,17 +21,5 @@ object AccessibilityUtil {
         val serviceName = "com.example.autopunchapp/.service.AutoPunchAccessibilityService"
         return enabledServices.any { it.id.contains(serviceName) }
     }
-    
-    /**
-     * 获取无障碍服务信息
-     */
-    fun getAccessibilityServiceInfo(context: Context): AccessibilityServiceInfo? {
-        val accessibilityManager = context.getSystemService(Context.ACCESSIBILITY_SERVICE) as AccessibilityManager
-        val enabledServices = accessibilityManager.getEnabledAccessibilityServiceList(
-            AccessibilityServiceInfo.FEEDBACK_ALL_MASK
-        )
-        
-        val serviceName = "com.example.autopunchapp/.service.AutoPunchAccessibilityService"
-        return enabledServices.find { it.id.contains(serviceName) }
-    }
-} 
+
+}

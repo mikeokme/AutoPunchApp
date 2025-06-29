@@ -40,6 +40,18 @@
         app:showAsAction="never" />
         
     <item
+        android:id="@+id/action_script_list"
+        android:orderInCategory="650"
+        android:title="脚本管理"
+        app:showAsAction="never" />
+        
+    <item
+        android:id="@+id/action_script_editor"
+        android:orderInCategory="660"
+        android:title="脚本编辑器"
+        app:showAsAction="never" />
+        
+    <item
         android:id="@+id/action_settings"
         android:orderInCategory="700"
         android:title="设置"
